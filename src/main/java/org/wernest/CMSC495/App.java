@@ -34,6 +34,9 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.wernest.CMSC495.authentication.AuthenticationFilter;
+import org.wernest.CMSC495.authentication.LoginResource;
+import org.wernest.CMSC495.authentication.RegisterResource;
 
 /**
  * CMSC 495 Final Project
@@ -50,7 +53,9 @@ public class App {
 
             System.out.println("\"CMSC 495 Final Project");
 
-            final ResourceConfig resourceConfig = new ResourceConfig(RestEventsResource.class);
+            final ResourceConfig resourceConfig = new ResourceConfig(RestEventsResource.class, LoginResource.class,
+            RegisterResource.class);
+            resourceConfig.register(AuthenticationFilter.class);
             resourceConfig.register(JacksonFeature.class);
 
             final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig, false);
@@ -62,6 +67,7 @@ public class App {
             }));
 
             server.getServerConfiguration().addHttpHandler(new StaticHttpHandler("src/main/resources/WEB-INF/"));
+
             server.start();
 
             System.out.println(String.format("Application started.\nTry out %s%s\nStop the application using CTRL+C",

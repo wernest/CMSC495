@@ -1,4 +1,4 @@
-package org.wernest.CMSC495.database;
+package org.wernest.CMSC495.dao;
 
 
 import org.hibernate.SessionFactory;

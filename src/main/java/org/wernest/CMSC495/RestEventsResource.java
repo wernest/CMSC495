@@ -24,16 +24,18 @@ SOFTWARE.
 package org.wernest.CMSC495;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
-import org.wernest.CMSC495.database.HibernateUtil;
+import org.wernest.CMSC495.authentication.Secured;
+import org.wernest.CMSC495.dao.HibernateUtil;
+import org.wernest.CMSC495.dao.SampleRowDAO;
+import org.wernest.CMSC495.dao.UserEntityDAO;
+import org.wernest.CMSC495.entities.SampleRow;
+import org.wernest.CMSC495.entities.UserEntity;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
+import java.security.Principal;
+import java.util.*;
 
 /**
  * @author wernest
@@ -41,26 +43,61 @@ import javax.ws.rs.core.Response;
 @Path("/")
 public class RestEventsResource{
 
+
+    @Context
+    SecurityContext securityContext;
+
+
     @GET
-    public String createNewSampleObject(){
+    @Secured
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createNewSampleObject(@Context SecurityContext securityContext){
+
         SampleRow sampleRow = new SampleRow();
+        SampleRowDAO sampleRowDAO = new SampleRowDAO();
         try {
 
             sampleRow.name = "Wiru";
+            Principal principal = securityContext.getUserPrincipal();
+            String username = principal.getName();
+            sampleRow.owner = new UserEntityDAO().getByUsername(username);
 
-            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-            session.beginTransaction();
-            session.save(sampleRow);
-            //Commit transaction
-            session.getTransaction().commit();
+            sampleRowDAO.save(sampleRow);
             System.out.println("Employee ID=" + sampleRow.id);
-
-            //terminate session factory, otherwise program won't end
-            HibernateUtil.getSessionFactory().close();
         } catch(Exception e) {
             e.printStackTrace();
         }
-        return "Sample Row = " + sampleRow.id;
+        return Response.ok(sampleRow).build();
+    }
+
+    List<SampleRow> list = null;
+
+    @GET
+    @Secured
+    @Path("/list")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<SampleRow> listSampleObjects(@Context HttpServletRequest servletRequest,
+                                             @Context SecurityContext securityContext){
+
+        try{
+
+            Principal principal = securityContext.getUserPrincipal();
+            String username = principal.getName();
+            UserEntity user = new UserEntityDAO().getByUsername(username);
+
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            list = session.createCriteria(SampleRow.class).list();
+            //Commit transaction
+            session.getTransaction().commit();
+            session.flush();
+            session.close();
+
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
 }
