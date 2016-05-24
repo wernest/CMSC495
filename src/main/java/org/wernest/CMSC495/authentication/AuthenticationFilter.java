@@ -14,12 +14,20 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Date;
 
 @Secured
 @Provider
 @Priority(Priorities.AUTHENTICATION)
 public class AuthenticationFilter implements ContainerRequestFilter {
 
+    /**
+     * Main method for the filter to validate each
+     * api request. Will attempt to retrieve the token
+     * from the request, updates the last accessed field
+     * and then places the user in the security context for
+     * the api to use.
+     */
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
 
@@ -30,7 +38,10 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
         // Check if the HTTP Authorization header is present and formatted correctly 
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
-            throw new NotAuthorizedException("Authorization header must be provided");
+            authorizationHeader = "Bearer " + requestContext.getCookies().get("CMSC495").getValue();
+            if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+                throw new NotAuthorizedException("Authorization header must be provided");
+            }
         }
 
         // Extract the token from the HTTP Authorization header
@@ -47,6 +58,11 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         }
 
         final String username = getUser(token);
+
+        if("".equals(username) || username == null) {
+            requestContext.abortWith(
+                    Response.status(Response.Status.UNAUTHORIZED).build());
+        }
 
         requestContext.setSecurityContext(new SecurityContext() {
 
@@ -79,17 +95,34 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         });
     }
 
+    /**
+     * Token validator. Gets the token object out of the
+     * database and makes sure it is valid.
+     * @param token token string
+     * @throws Exception
+     */
     private void validateToken(String token) throws Exception {
         UserTokenDAO userTokenDAO = new UserTokenDAO();
         UserToken userToken = userTokenDAO.getByToken(token);
         if(userToken!=null){
             if(userToken.isValid()) {
+                userToken.setDate(new Date(System.currentTimeMillis()));
+                userTokenDAO.update(userToken);
                 return;
+            }else { //Expired token, delete
+                userTokenDAO.delete(userToken);
             }
         }
         throw new Exception("Token not found or expired");
     }
 
+    /**
+     * Uses the token to get the User it is assigned to so
+     * we can place that user on our security context so that
+     * the subsequent endpoints know the user object.
+     * @param token token string
+     * @return user name this token belongs to
+     */
     private String getUser(String token){
         UserTokenDAO userTokenDAO = new UserTokenDAO();
         UserToken userToken = userTokenDAO.getByToken(token);

@@ -1,31 +1,10 @@
 var myApp = angular.module('loginForm', []);
 
 myApp.service('sharedProperties', function() {
-  var apiKey = "";
-  var apiSecret = "";
-  var encodedAuth = "";
   var oauthToken = "";
   var userName = "";
 
   return {
-    getApiKey: function() {
-      return apiKey;
-    },
-    setApiKey: function(value) {
-      apiKey = value;
-    },
-    getApiSecret: function() {
-      return apiSecret;
-    },
-    setApiSecret: function(value) {
-      apiSecret = value;
-    },
-    getEncodedAuth: function() {
-      return encodedAuth;
-    },
-    setEncodedAuth: function(value) {
-      encodedAuth = value;
-    },
     getOauthToken: function() {
       return oauthToken;
     },
@@ -109,102 +88,11 @@ myApp.controller('makeAccountController', ["$scope", "$http", "$window", functio
 
 }]);
 
-myApp.controller('RestBasicController', ["$scope", "$window", "$http", 'sharedProperties', function($scope, $window, $http, sharedProperties) {
-
-  $scope.myCity = "______";
-
-  $scope.makeRestCall = function() {
-
-    //Get the temperature of specified city from REST endpoint, using Basic Auth
-    $http({method: "GET", url: '/api/api/weather/' + $scope.city, headers: {'Authorization': 'Basic ' + sharedProperties.getEncodedAuth()}}).success(function(data, status, headers, config) {
-      $scope.temp = data;
-      $scope.myCity = $scope.city;
-
-    })
-        .error(function(data, status, headers, config) {
-          $window.alert("Error");
-        });
-
-  }
-}]);
-
-myApp.controller('OauthTokenController', ["$scope", "$http", "$window",'sharedProperties', function($scope, $http, $window, sharedProperties) {
-
-  $scope.providers = [{provider:{Id:'London', ScopeName: 'London'}},{provider:{Id:'Berlin', ScopeName: 'Berlin'}},
-    {provider:{Id:'San Mateo', ScopeName: 'SanMateo'}}, {provider:{Id:'San Francisco', ScopeName: 'SanFrancisco'}}];
-  $scope.ids = {};
-
-
-  $scope.getOauthToken = function() {
-
-    var myData = $.param({grant_type: "client_credentials"});
-    var scopeData = "";
-
-    var first = 0;
-    for(var i in $scope.ids) {
-      console.log(i + "=" + $scope.ids[i]);
-      if($scope.ids[i] == true){
-        if(first == 0) {
-          scopeData = scopeData + i;
-          first = 1;
-        }
-        else{
-          scopeData = scopeData + " " + i;
-        }
-      }
-    }
-
-    myData = $.param({grant_type: "client_credentials", scope: scopeData});
-
-    console.log(myData);
-
-    //Try and get an Oauth Token
-    $http({method: "POST", url: '/api/oauthToken',
-      headers: {'Authorization': 'Basic ' + sharedProperties.getEncodedAuth(), 'Content-Type': 'application/x-www-form-urlencoded'},
-      data : myData})
-
-        .success(function(data, status, headers, config) {
-          console.log(data.access_token);
-          var oauthToken = data.access_token;
-          sharedProperties.setOauthToken(oauthToken);
-          $scope.oauthToken = oauthToken;
-
-
-        }).
-        error(function(data, status, headers, config) {
-          $window.alert("Error");
-        });
-  }
-
-
-}]);
-
-
-myApp.controller('RestOauthController', ["$scope", "$window", "$http", 'sharedProperties', function($scope, $window, $http, sharedProperties) {
-
-  $scope.myCity = "______";
-
-  $scope.makeRestCall = function() {
-
-    //Get the temperature of specified city from REST endpoint, using Oauth
-    $http({method: "GET", url: '/api/api/weather/' + $scope.city, headers: {'Authorization': 'Bearer ' + sharedProperties.getOauthToken()}}).success(function(data, status, headers, config) {
-      $scope.temp = data;
-      $scope.myCity = $scope.city;
-
-    })
-        .error(function(data, status, headers, config) {
-          $window.alert("Permission Denied!");
-        });
-
-  }
-}]);
-
-
-myApp.controller('ListSampleRows', ["$scope", "$window", "$http", function($scope, $window, $http) {
+myApp.controller('ListSampleRows', ["$scope", "$window", "$http", 'sharedProperties', function($scope, $window, $http, sharedProperties) {
 
 
   //Get the list of sample rows from the api end point
-  $http({method: "GET", url: '/api/list'}).success(function(data, status, headers, config) {
+  $http({method: "GET", url: '/api/list', headers: {'Authorization': 'Bearer ' + sharedProperties.getOauthToken()}}).success(function(data, status, headers, config) {
     $scope.sampleRows = data;
 
   })

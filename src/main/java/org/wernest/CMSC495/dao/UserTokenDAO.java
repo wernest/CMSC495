@@ -1,8 +1,6 @@
 package org.wernest.CMSC495.dao;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.wernest.CMSC495.entities.UserEntity;
 import org.wernest.CMSC495.entities.UserToken;
 
 /**
@@ -11,11 +9,16 @@ import org.wernest.CMSC495.entities.UserToken;
 public class UserTokenDAO extends AbstractHibernateDAO<UserToken> {
 
     public UserToken getByToken(String token){
-        return (UserToken) this.getCurrentSession().getNamedQuery("UserToken.getByToken").setString("token", token).uniqueResult();
+        Session session = getCurrentSession();
+        session.beginTransaction();
+        UserToken userToken = (UserToken) this.getCurrentSession().getNamedQuery("UserToken.getByToken").setString("token", token).uniqueResult();
+        session.getTransaction().commit();
+        session.close();
+        return userToken;
     }
 
     public UserToken getByUser(Long userId){
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = getCurrentSession();
         session.beginTransaction();
         UserToken userToken = (UserToken) session.getNamedQuery("UserToken.getByUserId").setString("userId", String.valueOf(userId)).uniqueResult();
         session.getTransaction().commit();

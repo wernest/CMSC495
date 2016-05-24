@@ -9,6 +9,7 @@ import org.wernest.CMSC495.entities.UserToken;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
 /**
@@ -31,7 +32,8 @@ public class LoginResource {
             String token = issueToken(userEntity);
 
             // Return the token on the response
-            return Response.ok(token).build();
+            NewCookie newCookie = new NewCookie("CMSC495", token, "", "localhost", "", 60*60*24, false);
+            return Response.ok(token).cookie(newCookie).build();
 
         } catch (Exception e) {
             return Response.status(Response.Status.UNAUTHORIZED).build();
@@ -50,11 +52,11 @@ public class LoginResource {
     }
 
     private String issueToken(UserEntity userEntity) {
-        // Issue a token (can be a random String persisted to a database or a JWT token)
-        // The issued token must be associated to a user
-        // Return the issued token
         UserTokenDAO userTokenDAO = new UserTokenDAO();
         UserToken oldToken = userTokenDAO.getByUser(userEntity.getID());
+        if(oldToken != null) {
+            userTokenDAO.delete(oldToken);
+        }
         SessionIdentifierGenerator sessionIdentifierGenerator = new SessionIdentifierGenerator();
         String token = sessionIdentifierGenerator.nextSessionId();
 

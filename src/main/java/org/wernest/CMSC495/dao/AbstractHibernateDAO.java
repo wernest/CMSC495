@@ -19,11 +19,22 @@ public abstract class AbstractHibernateDAO< T extends Serializable> {
     }
 
     public T findOne( final Long id ){
-        return (T) getCurrentSession().get( clazz, id );
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        T t = (T) session.get(clazz, id);
+        session.getTransaction().commit();
+        session.close();
+        return t;
     }
     public List< T > findAll(){
-        return getCurrentSession()
-                .createQuery( "from " + clazz.getName() ).list();
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        List<T> list = session.createQuery( "from " + clazz.getName() ).list();
+        session.getTransaction().commit();
+        session.close();
+
+        return list;
     }
 
     public void save( final T entity ){
@@ -31,27 +42,36 @@ public abstract class AbstractHibernateDAO< T extends Serializable> {
         session.beginTransaction();
         session.persist(entity);
         session.getTransaction().commit();
-        session.flush();
         session.close();
     }
 
     public void update( final T entity ){
-        getCurrentSession().merge( entity );
+        Session session = getCurrentSession();
+        session.beginTransaction();
+        session.merge( entity );
+        session.getTransaction().commit();
+        session.close();
     }
 
     public void delete( final T entity ){
-        getCurrentSession().delete( entity );
+        Session session = getCurrentSession();
+        session.beginTransaction();
+        session.delete( entity );
+        session.getTransaction().commit();
+        session.close();
     }
     public void deleteById( final Long entityId ){
         final T entity = findOne( entityId );
 
         delete( entity );
+
     }
 
-    protected Session getCurrentSession(){
-        if(sessionFactory == null) {
+    protected Session getCurrentSession() {
+        if (sessionFactory == null) {
             this.sessionFactory = HibernateUtil.getSessionFactory();
         }
-        return sessionFactory.getCurrentSession();
+        return sessionFactory.openSession();
     }
+
 }
