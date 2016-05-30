@@ -1,7 +1,6 @@
 package org.wernest.CMSC495.authentication;
 
 import org.wernest.CMSC495.dao.UserTokenDAO;
-import org.wernest.CMSC495.entities.UserToken;
 
 import javax.annotation.Priority;
 import javax.ws.rs.NotAuthorizedException;
@@ -14,7 +13,6 @@ import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.Date;
 
 @Secured
 @Provider
@@ -36,7 +34,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         String authorizationHeader =
                 requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
 
-        // Check if the HTTP Authorization header is present and formatted correctly 
+        // Check if the HTTP Authorization header is present and formatted correctly
         if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
             authorizationHeader = "Bearer " + requestContext.getCookies().get("CMSC495").getValue();
             if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
@@ -55,6 +53,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         } catch (Exception e) {
             requestContext.abortWith(
                     Response.status(Response.Status.UNAUTHORIZED).build());
+            return;
         }
 
         final String username = getUser(token);
@@ -62,6 +61,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         if("".equals(username) || username == null) {
             requestContext.abortWith(
                     Response.status(Response.Status.UNAUTHORIZED).build());
+            return;
         }
 
         requestContext.setSecurityContext(new SecurityContext() {
@@ -103,15 +103,8 @@ public class AuthenticationFilter implements ContainerRequestFilter {
      */
     private void validateToken(String token) throws Exception {
         UserTokenDAO userTokenDAO = new UserTokenDAO();
-        UserToken userToken = userTokenDAO.getByToken(token);
-        if(userToken!=null){
-            if(userToken.isValid()) {
-                userToken.setDate(new Date(System.currentTimeMillis()));
-                userTokenDAO.update(userToken);
-                return;
-            }else { //Expired token, delete
-                userTokenDAO.delete(userToken);
-            }
+        if(userTokenDAO.verifyToken(token)) {
+            return;
         }
         throw new Exception("Token not found or expired");
     }
@@ -125,12 +118,6 @@ public class AuthenticationFilter implements ContainerRequestFilter {
      */
     private String getUser(String token){
         UserTokenDAO userTokenDAO = new UserTokenDAO();
-        UserToken userToken = userTokenDAO.getByToken(token);
-        if(userToken!=null){
-            if(userToken.isValid()) {
-                return userToken.getUser().getUsername();
-            }
-        }
-        return null;
+        return userTokenDAO.getUsernameByToken(token);
     }
 }

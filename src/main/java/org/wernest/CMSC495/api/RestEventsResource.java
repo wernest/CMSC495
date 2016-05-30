@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-package org.wernest.CMSC495;
+package org.wernest.CMSC495.api;
 
 import org.hibernate.Session;
 import org.wernest.CMSC495.authentication.Secured;
@@ -31,36 +31,29 @@ import org.wernest.CMSC495.dao.UserEntityDAO;
 import org.wernest.CMSC495.entities.SampleRow;
 import org.wernest.CMSC495.entities.UserEntity;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.annotation.Resource;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import java.security.Principal;
 import java.util.*;
 
 /**
  * @author wernest
  */
 @Path("/")
-public class RestEventsResource{
-
-
-    @Context
-    SecurityContext securityContext;
-
+@Resource
+public class RestEventsResource extends BaseResource{
 
     @GET
     @Secured
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createNewSampleObject(@Context SecurityContext securityContext){
+    public Response createNewSampleObject(){
 
         SampleRow sampleRow = new SampleRow();
         SampleRowDAO sampleRowDAO = new SampleRowDAO();
         try {
 
-            sampleRow.name = "Wiru";
-            Principal principal = securityContext.getUserPrincipal();
-            String username = principal.getName();
-            sampleRow.owner = new UserEntityDAO().getByUsername(username);
+            sampleRow.name = "";
+            sampleRow.owner = new UserEntityDAO().getByUsername(this.setUser());
 
             sampleRowDAO.save(sampleRow);
             System.out.println("Employee ID=" + sampleRow.id);
@@ -76,15 +69,11 @@ public class RestEventsResource{
     @Secured
     @Path("/list")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<SampleRow> listSampleObjects(@Context HttpServletRequest servletRequest,
-                                             @Context SecurityContext securityContext){
+    public List<SampleRow> listSampleObjects(){
 
         try{
-
-            Principal principal = securityContext.getUserPrincipal();
-            String username = principal.getName();
-            UserEntity user = new UserEntityDAO().getByUsername(username);
-
+            this.setUser();
+            UserEntity user = new UserEntityDAO().getByUsername(this.setUser());
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
             list = session.createCriteria(SampleRow.class).list();
@@ -92,7 +81,6 @@ public class RestEventsResource{
             session.getTransaction().commit();
             session.flush();
             session.close();
-
 
         } catch(Exception e) {
             e.printStackTrace();

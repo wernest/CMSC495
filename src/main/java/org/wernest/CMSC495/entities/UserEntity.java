@@ -1,7 +1,12 @@
 package org.wernest.CMSC495.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -30,7 +35,11 @@ public class UserEntity implements Serializable{
     @Column(name="last_name")
     private String last_name;
 
-    UserEntity() {}
+    @JsonIgnore
+    @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "userEntity")
+    public List<SwotReport> swotReports;
+
+    public UserEntity() {}
 
     public UserEntity(String email, String username) {
         this.email = email;
@@ -58,10 +67,12 @@ public class UserEntity implements Serializable{
         this.email = email;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
+    @JsonProperty
     public void setPassword(String password) {
         this.password = password;
     }

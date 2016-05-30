@@ -72,6 +72,7 @@ public class UserToken implements Serializable{
 
     public void setDate(Date date) {
         this.date = date;
+        this.setNewExpiration();
     }
 
     public Date getExpires() {

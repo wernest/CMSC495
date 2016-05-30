@@ -40,7 +40,7 @@ public abstract class AbstractHibernateDAO< T extends Serializable> {
     public void save( final T entity ){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.persist(entity);
+        session.saveOrUpdate(entity);
         session.getTransaction().commit();
         session.close();
     }

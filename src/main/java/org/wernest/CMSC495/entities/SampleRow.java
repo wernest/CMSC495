@@ -2,6 +2,7 @@ package org.wernest.CMSC495.entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -43,6 +44,7 @@ public class SampleRow implements Serializable{
         this.name = name;
     }
 
+    @JsonIgnore
     public UserEntity getOwner() {
         return owner;
     }

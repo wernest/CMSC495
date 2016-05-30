@@ -34,6 +34,8 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import org.glassfish.grizzly.http.server.HttpServer;
+import org.wernest.CMSC495.api.RestEventsResource;
+import org.wernest.CMSC495.api.SwotResource;
 import org.wernest.CMSC495.authentication.AuthenticationFilter;
 import org.wernest.CMSC495.authentication.LoginResource;
 import org.wernest.CMSC495.authentication.LogoutResource;
@@ -54,10 +56,13 @@ public class App {
 
             System.out.println("\"CMSC 495 Final Project");
 
-            final ResourceConfig resourceConfig = new ResourceConfig(RestEventsResource.class, LoginResource.class,
-            RegisterResource.class, LogoutResource.class);
-            resourceConfig.register(AuthenticationFilter.class);
-            resourceConfig.register(JacksonFeature.class);
+            final ResourceConfig resourceConfig = new ResourceConfig(AuthenticationFilter.class,
+                    RestEventsResource.class,
+                    SwotResource.class,
+                    LoginResource.class,
+                    RegisterResource.class,
+                    LogoutResource.class,
+                    JacksonFeature.class);
 
             final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, resourceConfig, false);
             Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
