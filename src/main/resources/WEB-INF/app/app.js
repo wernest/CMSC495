@@ -45,7 +45,7 @@ myApp.controller('logoutController', ["$scope", "$window", "$http", function($sc
 
   $scope.makeLogoutCall = function() {
 
-    $http({method: "GET", url: '/api/logout',
+    $http({method: "GET", url: '/api/logout'
     }).success(function(data, status, headers, config) {
       $window.location.href = "/app/login.html";
 
@@ -88,16 +88,17 @@ myApp.controller('makeAccountController', ["$scope", "$http", "$window", functio
 
 }]);
 
-myApp.controller('ListSampleRows', ["$scope", "$window", "$http", 'sharedProperties', function($scope, $window, $http, sharedProperties) {
+myApp.controller('ListSwotReports', ["$scope", "$window", "$http", 'sharedProperties', function($scope, $window, $http, sharedProperties) {
 
 
   //Get the list of sample rows from the api end point
-  $http({method: "GET", url: '/api/list', headers: {'Authorization': 'Bearer ' + sharedProperties.getOauthToken()}}).success(function(data, status, headers, config) {
-    $scope.sampleRows = data;
+  $http({method: "GET", url: '/api/swot', headers: {'Authorization': 'Bearer ' + sharedProperties.getOauthToken()}}).success(function(data, status, headers, config) {
+    $scope.reports = data;
 
   })
       .error(function(data, status, headers, config) {
-        $window.alert("Permission Denied!");
+        var url = "http://" + $window.location.host + "/app/login.html";
+        $window.location.href = url;
       });
 
 }]);
