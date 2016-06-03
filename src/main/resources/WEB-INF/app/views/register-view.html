@@ -1,0 +1,48 @@
+<div ng-controller="RegisterController">
+
+<form class="form-signin" role="form" ng-submit="signUp()" name="registerForm">
+
+    <h2 class="form-signin-heading">No Account? Sign up!</h2>
+    <div ng-class="{ 'has-error': registerForm.first_name.$invalid && registerForm.first_name.$touched }">
+    <input name="first_name" type="text" class="form-control" placeholder="First name" ng-model="first_name" required>
+        </div>
+    <div ng-class="{ 'has-error': registerForm.last_name.$invalid && registerForm.last_name.$touched }">
+    <input name="last_name" type="text" class="form-control" placeholder="Last name" ng-model="last_name" required ng-class="{ 'has-error': registerForm.last_name.$invalid }">
+        </div>
+    <div ng-class="{ 'has-error': registerForm.username.$invalid && registerForm.username.$touched }">
+        <input name="username" type="text" class="form-control" placeholder="Username" ng-model="username"  ng-class="{ 'has-error': registerForm.username.$invalid }"
+               ng-minlength="5"
+               required>
+    </div>
+    <div ng-class="{ 'has-error': registerForm.email.$invalid && registerForm.email.$error }">
+        <input name="email" type="text" class="form-control" placeholder="Email address" ng-model="email" required ng-class="{ 'has-error': registerForm.email.$invalid }">
+    </div>
+    <div ng-class="{ 'has-error': registerForm.password.$invalid && registerForm.password.$error }">
+        <input name="password" type="password" class="form-control" placeholder="Password" ng-model="password" ng-minlength="6" required ng-class="{ 'has-error': registerForm.password.$invalid }">
+    </div>
+    <div ng-messages="registerForm.username.$error" class="form-error" role="alert" ng-show="registerForm.username.$touched"
+         ng-model-options="{ updateOn: 'blur' }">
+        <div ng-message="required">
+            Username is required.</div>
+        <div ng-message="minlength">Username must be at least 5 characters</div>
+    </div>
+    <div ng-messages="registerForm.email.$error" class="form-error" role="alert" ng-show="registerForm.email.$touched"
+         ng-model-options="{ updateOn: 'blur' }">
+        <div ng-message="required">Email address is required.</div>
+    </div>
+    <div ng-messages="registerForm.first_name.$error" class="form-error" role="alert" ng-show="registerForm.first_name.$touched"
+         ng-model-options="{ updateOn: 'blur' }">
+        <div ng-message="required">First name is required.</div>
+    </div>
+    <div ng-messages="registerForm.last_name.$error" class="form-error" role="alert" ng-show="registerForm.last_name.$touched"
+         ng-model-options="{ updateOn: 'blur' }">
+        <div ng-message="required">Last name is required.</div>
+    </div>
+    <div ng-messages="registerForm.password.$error" class="form-error" role="alert" ng-show="registerForm.password.$touched"
+         ng-model-options="{ updateOn: 'blur' }">
+        <div ng-message="required">Password is required.</div>
+        <div ng-message="minlength">Password must be at least 6 characters</div>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Make Account</button>
+</form>
+</div>
