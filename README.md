@@ -10,3 +10,4 @@
         mysql password = password
     mysql database = CMSC495
 This is a new line!
+Hannah signed on
