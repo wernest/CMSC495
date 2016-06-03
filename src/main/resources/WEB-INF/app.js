@@ -5,13 +5,13 @@ var swotapp = angular.module('swotapp', [
     'ui.bootstrap',
     'swotapp.login',
     'swotapp.register',
-    'swotapp.dashboard'
+    'swotapp.dashboard',
+    'swotapp.navbar'
 ])
     .run(function($templateCache, $http) {
         //This bit of code here will pre-fetch all our templates
         $http.get('/app/views/login-view.html', {cache: $templateCache});
         $http.get('/app/views/register-view.html', {cache: $templateCache});
-
     });
 
 swotapp.config(['$routeProvider',
