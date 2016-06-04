@@ -9,6 +9,3 @@
         mysql username = db_user
         mysql password = password
     mysql database = CMSC495
-This is a new line!
-This is another new line from Danton.
-Hannah signed on
