@@ -37,8 +37,23 @@
         <!--<div class="col-xs-2"></div>-->
         <!--<div class="col-xs-10">-->
             <!--<div class="jumbotron">-->
+            
+            
+      		<h1 class="header-top">SWOT ANALYSIS</h1>      
+            
+            <nav>
+            	<ul class="navi">
+            		<li class="navi-list"><a class="active" href="#">Home</a></li>
+            		<li class="navi-list"><a href="#">Create New</a></li>
+            		<li class="navi-list"><a href="#">Logout</a></li>
+            	</ul>
+            </nav>
+            
+            
                 <div class = "listSwotReports" ng-controller="ListSwotReports" ngshow="showList">
-                    <h2 class="text-center lead">SWOT Reports List </h2>
+                    <h2 class="text-center lead"><b>SWOT Reports List</b></h2>
+                    <h5 class="view-report">You have x available SWOT reports</h5>
+                    <h5 class="view-report">Click to view</h5>
                     <p class="text-center">
                         <small ng-show="reports.length < 1"> (It worked, it's just empty)</small>
                     </p>
@@ -46,6 +61,13 @@
                         {{sampleRow.id}}  {{sampleRow.name}}
                     </div>
                 </div>
+                
+                
+                <div class="footer">
+	<h6>Copyright &copy; 2016 SWOT Analysis</h6>
+</div>
+                
+                
             <!--</div>-->
 
         <!--</div>-->

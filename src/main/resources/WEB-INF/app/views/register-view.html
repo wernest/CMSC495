@@ -1,8 +1,12 @@
-<div ng-controller="RegisterController">
+
+<h1 class="header-top">SWOT ANALYSIS</h1>
+
+
+<div class="register-border" ng-controller="RegisterController">
 
 <form class="form-signin" role="form" ng-submit="signUp()" name="registerForm">
 
-    <h2 class="form-signin-heading">No Account? Sign up!</h2>
+    <h2 class="form-signin-heading">Create new account</h2>
     <div ng-class="{ 'has-error': registerForm.first_name.$invalid && registerForm.first_name.$touched }">
     <input name="first_name" type="text" class="form-control" placeholder="First name" ng-model="first_name" required>
         </div>
@@ -45,4 +49,8 @@
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Make Account</button>
 </form>
+</div>
+
+<div class="footer">
+	<h6>Copyright &copy; 2016 SWOT Analysis</h6>
 </div>
