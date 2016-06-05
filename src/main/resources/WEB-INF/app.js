@@ -6,12 +6,13 @@ var swotapp = angular.module('swotapp', [
     'swotapp.login',
     'swotapp.register',
     'swotapp.dashboard',
-    'swotapp.navbar'
+    'swotapp.navbar',
+    'swotapp.createswot'
 ])
     .run(function($templateCache, $http) {
         //This bit of code here will pre-fetch all our templates
         $http.get('/app/views/login-view.html', {cache: $templateCache});
-        $http.get('/app/views/register-view.html', {cache: $templateCache});
+        $http.get('/app/views/dashboard-viewhtml', {cache: $templateCache});
     });
 
 swotapp.config(['$routeProvider',
@@ -29,18 +30,14 @@ swotapp.config(['$routeProvider',
                 templateUrl: '/app/views/register-view.html',
                 controller: 'RegisterController'
             }).
+            when('/confirmation', {
+                templateUrl: '/app/views/confirmation-view.html'
+            }).
+            when('/dashboard/createSwot', {
+                templateUrl: '/app/views/create-swot-view.html',
+                controller: 'CreateSwotController'
+            }).
             otherwise({
                 redirectTo: '/'
             });
     }]);
-//swotapp.config(function($mdThemingProvider, $mdIconProvider) {
-//    $mdThemingProvider.theme('default')
-//        .accentPalette('green', {
-//            'default': '500',
-//            'hue-1': '200',
-//            'hue-2': '600',
-//            'hue-3': '900'
-//        });
-
-    //$mdIconProvider.icon('menu', '/assets/material-design-icons/navigation/svg/production/ic_menu_24px.svg', 24);
-//});

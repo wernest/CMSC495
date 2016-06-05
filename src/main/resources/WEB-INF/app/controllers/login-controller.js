@@ -4,6 +4,13 @@ var myApp = angular.module('swotapp.login', [
 
 myApp.controller('LoginController', ["$scope", "$location", "$http", 'sharedProperties', function($scope, $location, $http, sharedProperties) {
 
+    $http.get("/api/login").then(function(response){
+        sharedProperties.setOauthToken(response.data);
+        $location.path("/dashboard");
+    }, function(response){
+        sharedProperties.setOauthToken("");
+    });
+
     $scope.submitFunction = function() {
 
         var username = $scope.username;

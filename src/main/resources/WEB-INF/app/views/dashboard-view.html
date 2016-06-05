@@ -1,81 +1,13 @@
-<!--<!DOCTYPE html>-->
-<!--<html ng-app="loginForm">-->
-<!--<head>-->
-    <!--<title>My Dashboard</title>-->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular.min.js"></script>-->
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
-    <!--<script src ="dashboard-controller.js"></script>-->
-    <!--<link href="/app/bootstrap/css/dashboard.css" rel="stylesheet" media="screen">-->
-    <!--<link href="/app/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+<nav-bar></nav-bar>
 
-
-<!--</head>-->
-<!--<body>-->
-
-<!--<div id="wrapper">-->
-
-    <!--&lt;!&ndash; Sidebar &ndash;&gt;-->
-    <!--<div id="sidebar-wrapper">-->
-        <!--<ul class="sidebar-nav">-->
-            <!--<li class="sidebar-brand"><a href="#">Dashboard</a>-->
-            <!--</li>-->
-            <!--<li><a href="#" ng-click="showList =! showList">showList</a>-->
-            <!--</li>-->
-            <!--<li>-->
-                <!--<div class = "logout" ng-controller="logoutController">-->
-                    <!--<a id="logoutLink" href ng-click="makeLogoutCall()"> Logout</a>-->
-                <!--</div>-->
-            <!--</li>-->
-        <!--</ul>-->
-    <!--</div>-->
-<!--</div>-->
-
-<!--<div class="container">-->
-
-    <!--<div class="row">-->
-
-        <!--<div class="col-xs-2"></div>-->
-        <!--<div class="col-xs-10">-->
-            <!--<div class="jumbotron">-->
-            
-            
-      		<h1 class="header-top">SWOT ANALYSIS</h1>      
-            
-            <nav>
-            	<ul class="navi">
-            		<li class="navi-list"><a class="active" href="#">Home</a></li>
-            		<li class="navi-list"><a href="#">Create New</a></li>
-            		<li class="navi-list"><a href="#">Logout</a></li>
-            	</ul>
-            </nav>
-            
-            
-                <div class = "listSwotReports" ng-controller="ListSwotReports" ngshow="showList">
-                    <h2 class="text-center lead"><b>SWOT Reports List</b></h2>
-                    <h5 class="view-report">You have x available SWOT reports</h5>
-                    <h5 class="view-report">Click to view</h5>
-                    <p class="text-center">
-                        <small ng-show="reports.length < 1"> (It worked, it's just empty)</small>
-                    </p>
-                    <div ng-repeat="report in reports">
-                        {{sampleRow.id}}  {{sampleRow.name}}
-                    </div>
-                </div>
-                
-                
-                <div class="footer">
-	<h6>Copyright &copy; 2016 SWOT Analysis</h6>
+<div class = "listSwotReports" ng-controller="ListSwotReports" ngshow="showList">
+    <h2 class="text-center lead"><b>SWOT Reports List</b></h2>
+    <h5 class="view-report">You have x available SWOT reports</h5>
+    <h5 class="view-report">Click to view</h5>
+    <p class="text-center">
+        <small ng-show="reports.length < 1"> (It worked, it's just empty)</small>
+    </p>
+    <div ng-repeat="report in reports">
+        {{sampleRow.id}}  {{sampleRow.name}}
+    </div>
 </div>
-                
-                
-            <!--</div>-->
-
-        <!--</div>-->
-
-    <!--</div>-->
-
-<!--</div>-->
-
-
-<!--</body>-->
-<!--</html>-->

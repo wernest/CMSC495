@@ -1,6 +1,7 @@
 package org.wernest.CMSC495.authentication;
 
 
+import org.wernest.CMSC495.api.BaseResource;
 import org.wernest.CMSC495.dao.UserEntityDAO;
 import org.wernest.CMSC495.dao.UserTokenDAO;
 import org.wernest.CMSC495.entities.UserCredentials;
@@ -8,15 +9,14 @@ import org.wernest.CMSC495.entities.UserEntity;
 import org.wernest.CMSC495.entities.UserToken;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.NewCookie;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
+import java.security.Principal;
 
 /**
  * Created by will on 5/22/16.
  */
 @Path("/login")
-public class LoginResource {
+public class LoginResource extends BaseResource{
 
     @POST
     @Produces(MediaType.APPLICATION_FORM_URLENCODED)
@@ -39,6 +39,20 @@ public class LoginResource {
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
     }
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Secured
+    public Response getToken(@Context SecurityContext securityContext){
+        String user = this.setUser();
+        UserEntity userEntity = new UserEntityDAO().getByUsername(user);
+        UserToken userToken = new UserTokenDAO().getByUser(userEntity.getID());
+        if(!userToken.isValid()) {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
+        return Response.ok(userToken.getToken()).build();
+    }
+
 
     private UserEntity authenticate(String username, String password) throws Exception {
         UserEntityDAO userEntityDAO = new UserEntityDAO();
@@ -64,4 +78,6 @@ public class LoginResource {
         userTokenDAO.save(userToken);
         return token;
     }
+
+
 }

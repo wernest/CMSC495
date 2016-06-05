@@ -1,8 +1,9 @@
 var app = angular.module('swotapp.register', [
-  'ngMessages'
+  'ngMessages',
+    'swotapp.shared'
 ]);
 
-app.controller('RegisterController', ["$scope", "$http", "$window", function($scope, $http, $window) {
+app.controller('RegisterController', ["$scope", "$http", "$location", "sharedProperties", function($scope, $http, $location, sharedProperties) {
 
   $scope.signUp = function() {
 
@@ -24,8 +25,8 @@ app.controller('RegisterController', ["$scope", "$http", "$window", function($sc
       $scope.username = "";
       $scope.email = "";
       $scope.password = "";
-      $window.alert("Account Created! Now, Sign In!");
-
+      sharedProperties.setUsername(userName);
+      $location.path("/confirmation");
     }).
         error(function(data, status, headers, config) {
           $window.alert("Error");
