@@ -4,9 +4,15 @@
     font-weight: bold;
 }
 
+html {
+	height: 100%;
+	box-sizing: border-box;
+}
+
 h1.header-top {
 	padding-left: 2cm;
 	padding-bottom: 1cm;
+	padding-top: 1cm;
 	font-color: #000099;
 	font-family: 'Arimo', sans-serif;
 	font-weight: bold;
@@ -16,17 +22,19 @@ body {
 	background-image: url("img/background.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 100%;
+	position: relative;
+	margin: 0;
+	padding-bottom: 6rem;
+	min-height: 100%;
 }
 
 
 div.container.ng-scope {
 	
-	border-radius: 20px;
+	border-radius: 10px;
 	background-color: #f2f2f2;
 	background: rgba(255, 255, 255, 0.3);
 	padding: 60px 20px 20px 20px;
-	border-radius: 4px;
 	width: 445px;
 	margin-top: 50px;
 	margin-left: 270px;
@@ -35,11 +43,10 @@ div.container.ng-scope {
 
 div.register-border.ng-scope {
 	
-	border-radius: 20px;
+	border-radius: 10px;
 	background-color: #f2f2f2;
 	background: rgba(255, 255, 255, 0.3);
 	padding: 60px 20px 20px 20px;
-	border-radius: 4px;
 	width: 445px;
 	margin-top: 50px;
 	margin-left: 270px;
@@ -49,15 +56,17 @@ div.register-border.ng-scope {
 h2.form-signin-heading {
 	color: #fff !important;
 	position: absolute;
-	top: 210px;
+	top: 178px;
 	left: 160px;
-	height: 65px;
-	width: 350px;
+	height: 40px;
+	width: 400px;
 	padding: 10px;
 	font-family: 'Arimo', sans-serif;
 	font-size: 25px;
 	margin-left: 120px;
 	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
 }
 
 input[type=text] {
@@ -108,6 +117,7 @@ input[type=email] {
     cursor: pointer;
 }
 
+
 button.btn.btn-lg.btn-primary.btn-block {
 	background: transparent;
 	background-color: #b3d1ff;
@@ -128,10 +138,11 @@ h6.no-account-signup {
 }
 
 div.footer {
-	position:absolute;
+	position: absolute;
 	bottom: 0;
-	width: 100%;
-	height: 60px;
+	right: 0;
+	left: 0;
+	padding: 1rem;
 	text-align: center;
 	font-style: italic;
 }
@@ -166,28 +177,303 @@ li.navi-list a:hover {
 }
 
 button.swot-button {
-	background-color: #4CAF50 /*test:green*/
+	background-color: #b3d1ff;
 	border: none;
-	color: white;
 	padding: 16px 32px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
 	margin: 4px 2px;
-	-webkit-transition-duration: 0.4s /*safari*/
+	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
 	cursor: pointer;
+	margin-top: 0px;
 }
 
 button.button-button {
-	background-color: white;
+	background-color: #b3d1ff;
 	color: black;
-	border: 2px solid #555555;
+	background:rgba(255,255,255,0.5);
+	border-radius: 10px;
+	padding-top: 7px;
+	padding-bottom: 7px;
 }
 
 button.button-button:hover {
-	background-color: #555555;
-	color: white;
+	background-color: #99c2ff;
+	color: gray;
+	background:rgba(255,255,255,0.9);
 }
 
+h4.login-after-signin {
+	text-align: center;
+	font-family: 'Arimo', sans-serif;
+}
+
+div.instruction-text {
+	margin-left: 120px;
+	margin-top: 30px;	
+	width: 750px;
+}
+
+div.instruction {
+	background-color: #f2f2f2;
+	background: rgba(255, 255, 255, 0.3);
+	padding: 60px 20px 20px 20px;
+	border-radius: 10px;
+	width: 480px;
+	height: 125px;
+	margin-top: 25px;
+	margin-left: 270px;
+	margin-right: 130px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+button.swot-button.button-button.button1 {
+	margin-right: 20px;
+	margin-left: 140px;
+	background-color: #99c2ff;
+}
+
+button.swot-button.button-button.button2 {
+	margin-right: 20px;
+	margin-left: 20px;
+	background-color: #99c2ff;
+}
+
+button.swot-button.button-button.button3 {
+	margin-right: 20px;
+	margin-left: 20px;
+	background-color: #99c2ff;
+}
+
+button.swot-button.button-button.button4 {
+	margin-right: 100px;
+	margin-left: 20px;
+	background-color: #99c2ff;
+}
+
+button.swot-button.button-button.button1:hover {
+	margin-right: 20px;
+	margin-left: 165px;
+	background-color: #66a3ff;
+}
+
+button.swot-button.button-button.button2:hover {
+	margin-right: 20px;
+	margin-left: 20px;
+	background-color: #66a3ff;
+}
+
+button.swot-button.button-button.button3:hover {
+	margin-right: 20px;
+	margin-left: 20px;
+	background-color: #66a3ff;
+}
+
+button.swot-button.button-button.button4:hover {
+	margin-right: 100px;
+	margin-left: 20px;
+	background-color: #66a3ff;
+}
+div.form-table {
+	background-color: #f2f2f2;
+	background: rgba(255, 255, 255, 0.3);
+	border-radius: 10px;
+	margin-top: 25px;
+	margin-left: 100px;
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+}
+
+
+input.tb-text {
+	padding-botton: 0px;
+	padding-top: 0px;
+	border-top-width: 0px;
+	border-botton-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+}
+
+button.generateSWOT {
+	background: transparent;
+	background-color: #99c2ff;
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	width: 410px;
+	height: 44px;
+	border-radius: 10px;
+	margin-left: 300px;
+}
+
+button.generateSWOT:hover {
+	background: transparent;
+	background-color: #66a3ff;
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	width: 410px;
+	height: 44px;
+}
+
+p.report-name {
+	text-align: center;
+	font-size: 20px;
+	font-style: bold;
+	font-family: 'Arimo', sans-serif;
+	margin-top: 20px;
+}
+
+table, th, td {
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 5px;
+	text-align: left;
+}
+
+td.td-pink {
+	border-bottom-color: #000000;
+}
+
+th.th-company {
+	background-color: #ffffe6;
+	width: 33%;
+	border-top: solid;
+	border-left: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+}
+
+td.td-company {
+	background-color: #ffffe6;
+	width: 33%;
+	border-left: solid;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+}
+
+th.th-pink {
+	background-color: #ffcccc;
+	width: 33%;
+	border-top: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+}
+
+td.td-pink {
+	background-color: #ffcccc;
+	width: 33%;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+}
+
+th.th-blue {
+	background-color: #ccffff;
+	width: 33%;
+	border-left: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+}
+
+td.td-blue {
+	background-color: #ccffff;
+	width: 33%;
+	border-left: solid;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+}
+
+th.th-green {
+	background-color: #ccffcc;
+	width: 33%;
+	border-right: solid;
+	border-color: #d9d9d9;
+}
+
+td.td-green {
+	background-color: #ccffcc;
+	width: 33%;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+}
+
+table.form-swot-table {
+	border: 1px solid #b3b3b3;
+}
+
+th.th-swot {
+	border: 1px solid #b3b3b3;
+}
+
+td.td-swot {
+	border: 1px solid #b3b3b3;
+}
+
+th.th-result-title-sp {
+	border: 1px solid #b3b3b3;
+	background-color: #0033cc;
+	width: 40%;
+}
+
+th.th-result-title-wp {
+	border: 1px solid #b3b3b3;
+	background-color: #ffff00;
+	width: 40%;
+}
+
+th.th-result-title-op {
+	border: 1px solid #b3b3b3;
+	background-color: #33cc33;
+	width: 40%
+}
+
+th.th-result-title-tp {
+	border: 1px solid #b3b3b3;
+	background-color: #cc0000;
+	width: 40%;
+}
+
+th.th-result-rotate-SOp {
+	border: 1px solid #b3b3b3;
+	background-color: #ffffff;
+	width: 10%;
+}
+
+th.th-result-rotate-WTp {
+	border: 1px solid #b3b3b3;
+	background-color: #ffffff;
+	width: 10%;
+}
+
+table.form-swot-table-create {
+	border: 1px solid #b3b3b3;
+	width: 100%;
+}
+				
+th.th-create {
+	width: 5%;
+	border: 1px solid #b3b3b3;
+}
+
+th.th-fac {
+	width: 95%;
+	border: 1px solid #b3b3b3;
+}
+
+td.td-create {
+	width: 5%;
+	border: 1px solid #b3b3b3;
+}
+
+td.td-fac {
+	width: 95%;
+	border: 1px solid #b3b3b3;
+}
