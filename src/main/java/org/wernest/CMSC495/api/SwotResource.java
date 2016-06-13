@@ -26,6 +26,7 @@ public class SwotResource extends BaseResource{
 
     @GET
     @Path("/{id}")
+    @Secured
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSwotReport(@PathParam("id") Long id){
         UserEntity user = new UserEntityDAO().getByUsername(this.setUser());
@@ -45,6 +46,7 @@ public class SwotResource extends BaseResource{
     }
 
     @PUT
+    @Secured
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response newSwotReport(SwotReport swotReport){
@@ -60,6 +62,7 @@ public class SwotResource extends BaseResource{
     }
 
     @POST
+    @Secured
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response saveSwotReport(@PathParam("id") Long id, SwotReport swotReport) {
@@ -82,6 +85,7 @@ public class SwotResource extends BaseResource{
     }
 
     @DELETE
+    @Secured
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response deleteSwotReport(@PathParam("id") Long id) {
