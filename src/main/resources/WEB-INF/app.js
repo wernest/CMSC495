@@ -2,6 +2,7 @@ var swotapp = angular.module('swotapp', [
     'ngRoute',
     'ngAnimate',
     'ngMessages',
+    'ngResource',
     'ui.bootstrap',
     'swotapp.login',
     'swotapp.register',
@@ -12,7 +13,7 @@ var swotapp = angular.module('swotapp', [
     .run(function($templateCache, $http) {
         //This bit of code here will pre-fetch all our templates
         $http.get('/app/views/login-view.html', {cache: $templateCache});
-        $http.get('/app/views/dashboard-viewhtml', {cache: $templateCache});
+        $http.get('/app/views/dashboard-view.html', {cache: $templateCache});
     });
 
 swotapp.config(['$routeProvider',

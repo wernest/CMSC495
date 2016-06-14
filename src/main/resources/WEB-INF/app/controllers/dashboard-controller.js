@@ -1,19 +1,18 @@
 var app = angular.module('swotapp.dashboard', [
-    'swotapp.shared'
+    'swotapp.swotresource'
 ]);
 //
 
 
-app.controller('ListSwotReports', ["$scope", "$location", "$http", 'sharedProperties', function($scope, $location, $http, sharedProperties) {
+app.controller('ListSwotReports', ["$scope", "$location", "SwotResource", function($scope, $location, swotResource) {
 
 
   //Get the list of sample rows from the api end point
-  $http({method: "GET", url: '/api/swot', headers: {'Authorization': 'Bearer ' + sharedProperties.getOauthToken()}}).success(function(data, status, headers, config) {
-    $scope.reports = data;
-  })
-      .error(function(data, status, headers, config) {
-          if(status === 401){
-              $location.path("/");
-          }
-      });
+  $scope.reports = swotResource.list(function(response){
+      return response;
+    }, function(error){
+      if(status === 401) {
+          $location.path("/");
+      }
+  });
 }]);

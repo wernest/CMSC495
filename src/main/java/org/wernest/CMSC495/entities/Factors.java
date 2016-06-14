@@ -15,10 +15,6 @@ public class Factors implements Serializable{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer ID;
 
-    @ManyToOne
-    @JoinColumn(name = "swot_report_id", nullable = false)
-    private SwotReport swotReport;
-
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum('S', 'W', 'O', 'T')")
     private FactorType factorType;
@@ -70,14 +66,6 @@ public class Factors implements Serializable{
 
     public void setWeightedScore(double weightedScore) {
         this.weightedScore = weightedScore;
-    }
-
-    public SwotReport getSwotReport() {
-        return swotReport;
-    }
-
-    public void setSwotReport(SwotReport swotReport) {
-        this.swotReport = swotReport;
     }
 
     public FactorType getFactorType() {

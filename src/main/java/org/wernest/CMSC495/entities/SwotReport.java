@@ -15,7 +15,7 @@ import java.util.List;
 public class SwotReport implements Serializable{
 
     public enum Strength{
-        WEAK, STRONG
+        WEAK, STRONG, NULL
     }
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -32,18 +32,18 @@ public class SwotReport implements Serializable{
 
     private double eFactorScore;
 
-    @Column(columnDefinition = "enum('WEAK', 'STRONG')")
+    @Column(columnDefinition = "enum('WEAK', 'STRONG', 'NULL')")
     @Enumerated(EnumType.STRING)
     private Strength internalStrength;
 
-    @Column(columnDefinition = "enum('WEAK', 'STRONG')")
+    @Column(columnDefinition = "enum('WEAK', 'STRONG', 'NULL')")
     @Enumerated(EnumType.STRING)
     private Strength externalStrength;
 
-    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "swotReport")
+    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
     public List<Strats> stratsList;
 
-    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "swotReport")
+    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
     public List<Factors> factorsList;
     public SwotReport() {
     }

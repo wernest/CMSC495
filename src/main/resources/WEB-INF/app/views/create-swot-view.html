@@ -1,108 +1,134 @@
 <nav-bar></nav-bar>
 
-<div class="instruction">
-	<p style="margin-bottom: 5px;">Instructions:</p>
-	<ol>
-		<li>Click on each letter box.</li>
-		<li>Enter factor, weight and rating.</li>
-		<li>Weighted score will be calculated as you fill out each row.</li>
-		<li>After you fill all 4 boxes, click submit to generate SWOT report.</li>
-	</ol>
+<div class="row">
+	<div class="text-center col-md-8 col-md-offset-2 instruction">
+		<p>Instructions:</p>
+		<ol>
+			<li>Click on each letter box.</li>
+			<li>Enter factor, weight and rating.</li>
+			<li>Weighted score will be calculated as you fill out each row.</li>
+			<li>After you fill all 4 boxes, click submit to generate SWOT report.</li>
+		</ol>
+	</div>
 </div>
 
 
+<div ng-controller="TabsController" class="text-center" style="margin: 20px;">
+	<div class="row">
+		<div class="text-center">
+			<button class="swot-button button-button"
+					ng-repeat="tab in tabs"
+					ng-class="{active:isActiveTab(tab.url)}"
+					ng-click="onClickTab(tab)">{{tab.title}}</button>
+		</div>
+	</div>
 
-
-<div class="instruction-text">
-	<button class="swot-button button-button button1">S</button>
-	<button class="swot-button button-button button2">W</button>
-	<button class="swot-button button-button button3">O</button>
-	<button class="swot-button button-button button4">T</button>
+	<div class="instruction col-md-10 col-md-offset-1 text-center" ng-controller="CreateSwotController">
+		<form>
+			<div ng-include="currentTab.url"></div>
+			<div class="row col-md-12 col-md-offset-4" style="margin: 20px;">
+				<div class="col-xs-3 col-xs-3 col-md-offset-2">
+					<button class="btn btn-secondary" ng-click="addRow(currentTab.title)">Add Row</button>
+				</div>
+				<div class="col-xs-3">
+					<button class="btn btn-primary" ng-click="saveSwot()">Generate SWOT</button>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
 
-<div class="form-table" style="width: 80%">
-	<table class="form-swot-table">
-		<caption>Strengths</caption>
-			<tr>
-				<th class="th-swot">#</th>
-				<th style="width: 450px">Factor</th>
-				<th class="th-swot">Weight</th>
-				<th class="th-swot">Rating</th>
-				<th class="th-swot">Weighted Score</th>
-			</tr>
-			<tr>
-				<td class="td-swot">1</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-			<tr>
-				<td class="td-swot">2</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-			<tr>
-				<td class="td-swot">3</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-			<tr>
-				<td class="td-swot">4</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-			<tr>
-				<td class="td-swot">5</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-			<tr>
-				<td class="td-swot">6</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-			<tr>
-				<td class="td-swot">7</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-			<tr>
-				<td class="td-swot">8</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-			<tr>
-				<td class="td-swot">9</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-			<tr>
-				<td class="td-swot">10</td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-				<td class="td-swot"></td>
-			</tr>
-	</table>
-</div>
 
-<div>
-<button class="generateSWOT">Generate SWOT</button>
-</div>
+<script type="text/ng-template" id="strength.tpl.html">
+	<div><h2>Strengths</h2></div>
+	<div class="row col-lg-12 col-lg-offset-0">
+		<div class="col-xs-1">#</div>
+		<div class="col-xs-8">Factor</div>
+		<div class="col-xs-1">Weight</div>
+		<div class="col-xs-1">Rating</div>
+		<div class="col-xs-1">Weighted Score</div>
+	</div>
+	<div class="row col-lg-12 col-lg-offset-0" style="margin-bottom: 10px;" ng-repeat="factor in factors">
+		<div class="col-xs-1">
+			{{$index + 1}}</div>
+		<div class="col-xs-8">
+			<input type="text" class="form-control input-sm" ng-model="factor.description"></div>
+		<div class="col-xs-1">
+			<input type="text" class="form-control input-sm" ng-model="factor.weight" ng-init="factor.weight=0"></div>
+		<div class="col-xs-1">
+			<input type="text" class="form-control input-sm" ng-model="factor.rating" ng-init="factor.rating=0"></div>
+		<div class="col-xs-1">
+			{{(factor.rating|number) * (factor.weight|number)}}
+		</div>
+	</div>
+</script>
+<script type="text/ng-template" id="weakness.tpl.html">
+	<div><h2>Weaknesses</h2></div>
+	<div class="row col-lg-12 col-lg-offset-0">
+		<div class="col-xs-1">#</div>
+		<div class="col-xs-8">Factor</div>
+		<div class="col-xs-1">Weight</div>
+		<div class="col-xs-1">Rating</div>
+		<div class="col-xs-1">Weighted Score</div>
+	</div>
+	<div class="row col-lg-12 col-lg-offset-0" style="margin-bottom: 10px;" ng-repeat="weak in weaknesses">
+		<div class="col-xs-1">
+			{{$index + 1}}</div>
+		<div class="col-xs-8">
+			<input type="text" class="form-control input-sm" ng-model="weak.description"></div>
+		<div class="col-xs-1">
+			<input type="text" class="form-control input-sm" ng-model="weak.weight" ng-init="weak.weight=0"></div>
+		<div class="col-xs-1">
+			<input type="text" class="form-control input-sm" ng-model="weak.rating" ng-init="weak.rating=0"></div>
+		<div class="col-xs-1">
+			{{(weak.rating|number) * (weak.weight|number)}}
+		</div>
+	</div>
+</script>
+<script type="text/ng-template" id="opportunities.tpl.html">
+	<div><h2>Opportunities</h2></div>
+	<div class="row col-lg-12 col-lg-offset-0">
+		<div class="col-xs-1">#</div>
+		<div class="col-xs-8">Factor</div>
+		<div class="col-xs-1">Weight</div>
+		<div class="col-xs-1">Rating</div>
+		<div class="col-xs-1">Weighted Score</div>
+	</div>
+	<div class="row col-lg-12 col-lg-offset-0" style="margin-bottom: 10px;" ng-repeat="opp in opportunities">
+		<div class="col-xs-1">
+			{{$index + 1}}</div>
+		<div class="col-xs-8">
+			<input type="text" class="form-control input-sm" ng-model="opp.description"></div>
+		<div class="col-xs-1">
+			<input type="text" class="form-control input-sm" ng-model="opp.weight" ng-init="opp.weight=0"></div>
+		<div class="col-xs-1">
+			<input type="text" class="form-control input-sm" ng-model="opp.rating" ng-init="opp.rating=0"></div>
+		<div class="col-xs-1">
+			{{(opp.rating|number) * (opp.weight|number)}}
+		</div>
+	</div>
+</script>
+<script type="text/ng-template" id="threats.tpl.html">
+	<div><h2>Threats</h2></div>
+	<div class="row col-lg-12 col-lg-offset-0">
+		<div class="col-xs-1">#</div>
+		<div class="col-xs-8">Factor</div>
+		<div class="col-xs-1">Weight</div>
+		<div class="col-xs-1">Rating</div>
+		<div class="col-xs-1">Weighted Score</div>
+	</div>
+	<div class="row col-lg-12 col-lg-offset-0" style="margin-bottom: 10px;" ng-repeat="threat in threats">
+		<div class="col-xs-1">
+			{{$index + 1}}</div>
+		<div class="col-xs-8">
+			<input type="text" class="form-control input-sm" ng-model="threat.description"></div>
+		<div class="col-xs-1">
+			<input type="text" class="form-control input-sm" ng-model="threat.weight" ng-init="threat.weight=0"></div>
+		<div class="col-xs-1">
+			<input type="text" class="form-control input-sm" ng-model="threat.rating" ng-init="threat.rating=0"></div>
+		<div class="col-xs-1">
+			{{(threat.rating|number) * (threat.weight|number)}}
+		</div>
+	</div>
+</script>
+</script>

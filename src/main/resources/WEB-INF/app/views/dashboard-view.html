@@ -7,7 +7,7 @@
     <p class="text-center">
         <small ng-show="reports.length < 1"> (It worked, it's just empty)</small>
     </p>
-    <div ng-repeat="report in reports">
-        {{sampleRow.id}}  {{sampleRow.name}}
+    <div ng-repeat="report in reports" class="text-center col-lg-4 col-lg-offset-4">
+        Report {{report.id}} was created by {{report.userEntity.username}} on {{report.creationDate}}
     </div>
 </div>

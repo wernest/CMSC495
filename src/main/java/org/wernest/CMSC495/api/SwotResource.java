@@ -45,7 +45,7 @@ public class SwotResource extends BaseResource{
         }
     }
 
-    @PUT
+    @POST
     @Secured
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -61,7 +61,7 @@ public class SwotResource extends BaseResource{
         }
     }
 
-    @POST
+    @PUT
     @Secured
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
