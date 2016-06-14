@@ -19,7 +19,6 @@
         <property name="hibernate.show_sql">true</property>
 
         <!-- List of XML mapping files -->
-        <mapping class="org.wernest.CMSC495.entities.SampleRow"/>
         <mapping class="org.wernest.CMSC495.entities.UserEntity"/>
         <mapping class="org.wernest.CMSC495.entities.UserToken"/>
         <mapping class="org.wernest.CMSC495.entities.SwotReport"/>

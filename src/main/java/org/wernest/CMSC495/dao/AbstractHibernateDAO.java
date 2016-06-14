@@ -1,9 +1,7 @@
 package org.wernest.CMSC495.dao;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,7 +16,7 @@ public abstract class AbstractHibernateDAO< T extends Serializable> {
         this.clazz = clazzToSet;
     }
 
-    public T findOne( final Long id ){
+    public T findOne( final Integer id ){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         T t = (T) session.get(clazz, id);
@@ -60,7 +58,7 @@ public abstract class AbstractHibernateDAO< T extends Serializable> {
         session.getTransaction().commit();
         session.close();
     }
-    public void deleteById( final Long entityId ){
+    public void deleteById( final Integer entityId ){
         final T entity = findOne( entityId );
 
         delete( entity );

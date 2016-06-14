@@ -23,7 +23,7 @@ public class FactorResource extends BaseResource{
     @GET
        @Path("/list/{parentID}")
        @Produces(MediaType.APPLICATION_JSON)
-       public Response listFactors(@PathParam("parentID") Long parentID){
+       public Response listFactors(@PathParam("parentID") Integer parentID){
         Response response = null;
         UserEntity user = userEntityDAO.getByUsername(this.setUser());
         SwotReport swotReport = new SwotReportDAO().findOne(parentID);
@@ -38,7 +38,7 @@ public class FactorResource extends BaseResource{
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getFactor(@PathParam("id") Long id){
+    public Response getFactor(@PathParam("id") Integer id){
         UserEntity user = userEntityDAO.getByUsername(this.setUser());
         try {
             //TODO Validate this user owns the SWOT REPORT
@@ -73,7 +73,7 @@ public class FactorResource extends BaseResource{
     @POST
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response saveFactor(@PathParam("id") Long id, Factors swotReport) {
+    public Response saveFactor(@PathParam("id") Integer id, Factors swotReport) {
         UserEntity user = userEntityDAO.getByUsername(this.setUser());
         try {
             //TODO Validate this user owns the SWOT REPORT
@@ -94,7 +94,7 @@ public class FactorResource extends BaseResource{
     @DELETE
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteFactor(@PathParam("id") Long id) {
+    public Response deleteFactor(@PathParam("id") Integer id) {
         UserEntity user = userEntityDAO.getByUsername(this.setUser());
         try {
             //TODO Validate this user owns the SWOT REPORT

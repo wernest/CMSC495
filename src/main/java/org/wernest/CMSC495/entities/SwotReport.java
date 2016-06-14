@@ -1,7 +1,7 @@
 package org.wernest.CMSC495.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,7 +21,7 @@ public class SwotReport implements Serializable{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer ID;
 
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity userEntity;

@@ -8,7 +8,8 @@ var swotapp = angular.module('swotapp', [
     'swotapp.register',
     'swotapp.dashboard',
     'swotapp.navbar',
-    'swotapp.createswot'
+    'swotapp.createswot',
+    'swotapp.strats'
 ])
     .run(function($templateCache, $http) {
         //This bit of code here will pre-fetch all our templates
@@ -34,9 +35,13 @@ swotapp.config(['$routeProvider',
             when('/confirmation', {
                 templateUrl: '/app/views/confirmation-view.html'
             }).
-            when('/dashboard/createSwot', {
+            when('/dashboard/swot/:id?', {
                 templateUrl: '/app/views/create-swot-view.html',
                 controller: 'CreateSwotController'
+            }).
+            when('/dashboard/strats/:id?', {
+                templateUrl: '/app/views/create-strats-view.html',
+                controller: 'StratsController'
             }).
             otherwise({
                 redirectTo: '/'

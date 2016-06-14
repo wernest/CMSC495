@@ -19,7 +19,7 @@ public class UserEntity implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long ID;
+    private Integer ID;
 
     @Column(unique = true)
     private String email;
@@ -50,12 +50,12 @@ public class UserEntity implements Serializable{
         this.email = email;
     }
 
-    public Long getID() {
+    public Integer getID() {
 
         return ID;
     }
 
-    public void setID(Long ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 

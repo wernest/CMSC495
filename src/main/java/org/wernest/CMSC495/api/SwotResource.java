@@ -29,13 +29,13 @@ public class SwotResource extends BaseResource{
     @Path("/{id}")
     @Secured
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getSwotReport(@PathParam("id") Long id){
+    public Response getSwotReport(@PathParam("id") Integer id){
         UserEntity user = new UserEntityDAO().getByUsername(this.setUser());
         try {
             SwotReport swotReport = new SwotReportDAO().findOne(id);
             if (swotReport == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
-            } else if (swotReport.getUserEntity() != user) {
+            } else if (!swotReport.getUserEntity().getID().equals(user.getID())) {
                 return Response.status(Response.Status.FORBIDDEN).build();
             } else {
                 return Response.ok(swotReport).build();
@@ -63,20 +63,21 @@ public class SwotResource extends BaseResource{
         }
     }
 
-    @PUT
+    @POST
     @Secured
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response saveSwotReport(@PathParam("id") Long id, SwotReport swotReport) {
+    public Response saveSwotReport(@PathParam("id") Integer id, SwotReport swotReport) {
         UserEntity user = new UserEntityDAO().getByUsername(this.setUser());
         SwotReportDAO swotReportDAO = new SwotReportDAO();
         try {
             SwotReport oldSwotReport = swotReportDAO.findOne(id);
             if (oldSwotReport == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
-            } else if (oldSwotReport.getUserEntity() != user) {
+            } else if (!oldSwotReport.getUserEntity().getID().equals(user.getID())) {
                 return Response.status(Response.Status.FORBIDDEN).build();
             } else {
+                swotReport.setUserEntity(user);
                 swotReportDAO.save(swotReport);
                 return Response.ok(swotReport).build();
             }
@@ -90,14 +91,14 @@ public class SwotResource extends BaseResource{
     @Secured
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteSwotReport(@PathParam("id") Long id) {
+    public Response deleteSwotReport(@PathParam("id") Integer id) {
         UserEntity user = new UserEntityDAO().getByUsername(this.setUser());
         SwotReportDAO swotReportDAO = new SwotReportDAO();
         try {
             SwotReport oldSwotReport = swotReportDAO.findOne(id);
             if (oldSwotReport == null) {
                 return Response.status(Response.Status.NOT_FOUND).build();
-            } else if (oldSwotReport.getUserEntity() != user) {
+            } else if (!oldSwotReport.getUserEntity().getID().equals(user.getID())) {
                 return Response.status(Response.Status.FORBIDDEN).build();
             } else {
                 swotReportDAO.deleteById(id);

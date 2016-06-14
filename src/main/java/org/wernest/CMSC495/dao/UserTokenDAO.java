@@ -53,7 +53,7 @@ public class UserTokenDAO extends AbstractHibernateDAO<UserToken> {
         session.close();
         return result;
     }
-    public UserToken getByUser(Long userId){
+    public UserToken getByUser(Integer userId){
         Session session = getCurrentSession();
         session.beginTransaction();
         UserToken userToken = (UserToken) session.getNamedQuery("UserToken.getByUserId").setString("userId", String.valueOf(userId)).uniqueResult();

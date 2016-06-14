@@ -12,7 +12,7 @@ public class Strats implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long ID;
+    private Integer ID;
 
     @ManyToOne
     @JoinColumn(name = "swot_report_id", nullable = false)
@@ -27,11 +27,11 @@ public class Strats implements Serializable{
     public Strats() {
     }
 
-    public Long getID() {
+    public Integer getID() {
         return ID;
     }
 
-    public void setID(Long ID) {
+    public void setID(Integer ID) {
         this.ID = ID;
     }
 

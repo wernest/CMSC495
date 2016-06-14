@@ -1,6 +1,8 @@
 package org.wernest.CMSC495.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -59,6 +61,7 @@ public class Factors implements Serializable{
         this.rating = rating;
     }
 
+    @JsonIgnore
     public double getWeightedScore() {
         return getRating() * getWeight();
     }

@@ -34,7 +34,6 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import org.glassfish.grizzly.http.server.HttpServer;
-import org.wernest.CMSC495.api.RestEventsResource;
 import org.wernest.CMSC495.api.SwotResource;
 import org.wernest.CMSC495.authentication.AuthenticationFilter;
 import org.wernest.CMSC495.authentication.LoginResource;
@@ -57,7 +56,6 @@ public class App {
             System.out.println("\"CMSC 495 Final Project");
 
             final ResourceConfig resourceConfig = new ResourceConfig(AuthenticationFilter.class,
-                    RestEventsResource.class,
                     SwotResource.class,
                     LoginResource.class,
                     RegisterResource.class,

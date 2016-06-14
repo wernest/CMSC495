@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class FactorDAO extends AbstractHibernateDAO<Factors> {
 
-    public List<Factors> finAllByParent(Long parentID){
+    public List<Factors> finAllByParent(Integer parentID){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         List<Factors> factorsList = Collections.emptyList();
