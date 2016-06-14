@@ -22,7 +22,6 @@ public class Factors implements Serializable{
     private String description;
     private double weight;
     private int rating;
-    private double weightedScore;
 
 
     public Factors() {
@@ -61,11 +60,7 @@ public class Factors implements Serializable{
     }
 
     public double getWeightedScore() {
-        return weightedScore;
-    }
-
-    public void setWeightedScore(double weightedScore) {
-        this.weightedScore = weightedScore;
+        return getRating() * getWeight();
     }
 
     public FactorType getFactorType() {

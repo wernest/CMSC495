@@ -10,6 +10,7 @@ import org.wernest.CMSC495.entities.UserEntity;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Date;
 import java.util.List;
 
 @Path("/swot")
@@ -53,6 +54,7 @@ public class SwotResource extends BaseResource{
         UserEntity user = new UserEntityDAO().getByUsername(this.setUser());
         try {
             swotReport.setUserEntity(user);
+            swotReport.setCreationDate(new Date());
             new SwotReportDAO().save(swotReport);
             return Response.ok(swotReport).build();
         }catch(HibernateException e) {

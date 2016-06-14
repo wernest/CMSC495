@@ -11,23 +11,21 @@ app.controller('CreateSwotController', ["$scope", 'SwotResource', function($scop
     $scope.threats = [{}];
 
     $scope.addRow = function(tabTitle){
+        var tempArray = $scope.threats;
         if(tabTitle == "S") {
-            $scope.factors.push({});
+            tempArray = $scope.factors;
         }else  if(tabTitle == "W"){
-            $scope.weaknesses.push({});
+            tempArray = $scope.weaknesses
         }else  if(tabTitle == "O"){
-            $scope.opportunities.push({});
-        }else{
-            $scope.threats.push({});
+            tempArray = $scope.opportunities;
         }
+        tempArray.push({factorType: tabTitle});
     };
 
     $scope.saveSwot = function(){
         var swotReport = {
             iFactorScore: 0.0,
             eFactorScore: 0.0,
-            internalStrength: 'NULL',
-            externalStrength: 'NULL',
             stratsList: [],
             factorsList:
                 $scope.factors.concat($scope.weaknesses.concat($scope.opportunities.concat($scope.threats)))
