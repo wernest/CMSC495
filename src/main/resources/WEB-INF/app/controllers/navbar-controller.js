@@ -4,10 +4,10 @@ var myApp = angular.module('swotapp.navbar', ['ui.bootstrap', 'swotapp.shared'])
 myApp.controller('NavBarCtrl', ['$scope', '$route', '$location', '$http', '$log', 'sharedProperties', function($scope, $route, $location, $http, $log, sharedProperties){
 
     $scope.createNew = function(){
-        if($location.path() === "/dashboard/createSwot") {
+        if($location.path() === "/dashboard/swot") {
             return;
         }else{
-            $location.path("/dashboard/createSwot");
+            $location.path("/dashboard/swot");
         }
     };
     $scope.home = function(){

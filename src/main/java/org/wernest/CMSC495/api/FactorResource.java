@@ -3,14 +3,15 @@ package org.wernest.CMSC495.api;
 import org.hibernate.HibernateException;
 import org.wernest.CMSC495.authentication.Secured;
 import org.wernest.CMSC495.dao.FactorDAO;
+import org.wernest.CMSC495.dao.SwotReportDAO;
 import org.wernest.CMSC495.dao.UserEntityDAO;
 import org.wernest.CMSC495.entities.Factors;
+import org.wernest.CMSC495.entities.SwotReport;
 import org.wernest.CMSC495.entities.UserEntity;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.List;
 
 @Path("/factors")
 @Secured
@@ -20,17 +21,24 @@ public class FactorResource extends BaseResource{
     FactorDAO factorDAO = new FactorDAO(); 
     
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response listFactors(){
+       @Path("/list/{parentID}")
+       @Produces(MediaType.APPLICATION_JSON)
+       public Response listFactors(@PathParam("parentID") Integer parentID){
+        Response response = null;
         UserEntity user = userEntityDAO.getByUsername(this.setUser());
-        List<Factors> reportList = factorDAO.findAll();
-        return Response.ok(reportList).build();
+        SwotReport swotReport = new SwotReportDAO().findOne(parentID);
+        if(swotReport.getUserEntity() != user) {
+            response = Response.status(Response.Status.FORBIDDEN).build();
+        }else {
+            response = Response.ok(new FactorDAO().finAllByParent(parentID)).build();
+        }
+        return response;
     }
 
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getFactor(@PathParam("id") Long id){
+    public Response getFactor(@PathParam("id") Integer id){
         UserEntity user = userEntityDAO.getByUsername(this.setUser());
         try {
             //TODO Validate this user owns the SWOT REPORT
@@ -65,7 +73,7 @@ public class FactorResource extends BaseResource{
     @POST
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response saveFactor(@PathParam("id") Long id, Factors swotReport) {
+    public Response saveFactor(@PathParam("id") Integer id, Factors swotReport) {
         UserEntity user = userEntityDAO.getByUsername(this.setUser());
         try {
             //TODO Validate this user owns the SWOT REPORT
@@ -86,7 +94,7 @@ public class FactorResource extends BaseResource{
     @DELETE
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteFactor(@PathParam("id") Long id) {
+    public Response deleteFactor(@PathParam("id") Integer id) {
         UserEntity user = userEntityDAO.getByUsername(this.setUser());
         try {
             //TODO Validate this user owns the SWOT REPORT

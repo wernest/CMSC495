@@ -69,21 +69,21 @@ h2.form-signin-heading {
 	padding-bottom: 0px;
 }
 
-input[type=text] {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 14px 20px;
-    margin: 8px 0;
-    cursor: pointer;
-}
+/*input[type=text] {*/
+    /*background: transparent;*/
+    /*border: 1px solid rgba(255, 255, 255, 0.6);*/
+    /*top: 500px;*/
+    /*left: 325px;*/
+    /*border-radius: 4px;*/
+    /*color: #fff;*/
+    /*font-family: 'Arimo', sans-serif;*/
+    /*font-size: 16px;*/
+    /*font-weight: 200;*/
+    /*width: 400px;*/
+    /*padding: 14px 20px;*/
+    /*margin: 8px 0;*/
+    /*cursor: pointer;*/
+/*}*/
 
 input[type=password] {
     background: transparent;
@@ -211,24 +211,10 @@ h4.login-after-signin {
 	font-family: 'Arimo', sans-serif;
 }
 
-div.instruction-text {
-	margin-left: 120px;
-	margin-top: 30px;	
-	width: 750px;
-}
-
-div.instruction {
+.instruction {
 	background-color: #f2f2f2;
 	background: rgba(255, 255, 255, 0.3);
-	padding: 60px 20px 20px 20px;
 	border-radius: 10px;
-	width: 480px;
-	height: 125px;
-	margin-top: 25px;
-	margin-left: 270px;
-	margin-right: 130px;
-	padding-top: 10px;
-	padding-bottom: 10px;
 }
 
 button.swot-button.button-button.button1 {

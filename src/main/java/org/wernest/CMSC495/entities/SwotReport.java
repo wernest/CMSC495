@@ -1,7 +1,7 @@
 package org.wernest.CMSC495.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,13 +15,13 @@ import java.util.List;
 public class SwotReport implements Serializable{
 
     public enum Strength{
-        WEAK, STRONG
+        WEAK, STRONG, NULL
     }
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer ID;
 
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity userEntity;
@@ -32,18 +32,18 @@ public class SwotReport implements Serializable{
 
     private double eFactorScore;
 
-    @Column(columnDefinition = "enum('WEAK', 'STRONG')")
+    @Column(columnDefinition = "enum('WEAK', 'STRONG', 'NULL')")
     @Enumerated(EnumType.STRING)
     private Strength internalStrength;
 
-    @Column(columnDefinition = "enum('WEAK', 'STRONG')")
+    @Column(columnDefinition = "enum('WEAK', 'STRONG', 'NULL')")
     @Enumerated(EnumType.STRING)
     private Strength externalStrength;
 
-    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "swotReport")
+    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
     public List<Strats> stratsList;
 
-    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "swotReport")
+    @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
     public List<Factors> factorsList;
     public SwotReport() {
     }

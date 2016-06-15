@@ -1,6 +1,8 @@
 package org.wernest.CMSC495.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -15,10 +17,6 @@ public class Factors implements Serializable{
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer ID;
 
-    @ManyToOne
-    @JoinColumn(name = "swot_report_id", nullable = false)
-    private SwotReport swotReport;
-
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum('S', 'W', 'O', 'T')")
     private FactorType factorType;
@@ -26,7 +24,6 @@ public class Factors implements Serializable{
     private String description;
     private double weight;
     private int rating;
-    private double weightedScore;
 
 
     public Factors() {
@@ -64,20 +61,9 @@ public class Factors implements Serializable{
         this.rating = rating;
     }
 
+    @JsonIgnore
     public double getWeightedScore() {
-        return weightedScore;
-    }
-
-    public void setWeightedScore(double weightedScore) {
-        this.weightedScore = weightedScore;
-    }
-
-    public SwotReport getSwotReport() {
-        return swotReport;
-    }
-
-    public void setSwotReport(SwotReport swotReport) {
-        this.swotReport = swotReport;
+        return getRating() * getWeight();
     }
 
     public FactorType getFactorType() {

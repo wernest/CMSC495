@@ -27,7 +27,7 @@ public class StratResource extends BaseResource{
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getStrat(@PathParam("id") Long id){
+    public Response getStrat(@PathParam("id") Integer id){
         UserEntity user = new UserEntityDAO().getByUsername(this.setUser());
         try {
             Strats strat = new StratDAO().findOne(id);
@@ -60,7 +60,7 @@ public class StratResource extends BaseResource{
     @POST
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response saveStrat(@PathParam("id") Long id, Strats strats) {
+    public Response saveStrat(@PathParam("id") Integer id, Strats strats) {
         UserEntity user = new UserEntityDAO().getByUsername(this.setUser());
         StratDAO stratDao = new StratDAO();
         try {
@@ -81,7 +81,7 @@ public class StratResource extends BaseResource{
     @DELETE
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deleteStrat(@PathParam("id") Long id) {
+    public Response deleteStrat(@PathParam("id") Integer id) {
         UserEntity user = new UserEntityDAO().getByUsername(this.setUser());
         StratDAO stratDao = new StratDAO();
         try {

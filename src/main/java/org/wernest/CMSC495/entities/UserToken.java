@@ -14,7 +14,7 @@ public class UserToken implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private Integer id;
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -42,11 +42,11 @@ public class UserToken implements Serializable{
         this.expires = new Date(System.currentTimeMillis() + 60*60*1000);
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
