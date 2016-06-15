@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-//Trying to commit changes
+
 @Entity
 @Table(name = "users")
 @NamedQueries({
