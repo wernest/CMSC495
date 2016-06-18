@@ -1,7 +1,7 @@
 <nav-bar></nav-bar>
 
 <div class="row">
-	<div class="text-center col-md-8 col-md-offset-2 instruction">
+	<div class="text-center col-md-8 col-md-offset-2 instruction-only">
 		<p>Instructions:</p>
 		<ol>
 			<li>Click on each letter box.</li>
@@ -29,6 +29,9 @@
 			<div class="row col-md-12 col-md-offset-4" style="margin: 20px;">
 				<div class="col-xs-3 col-xs-3 col-md-offset-2">
 					<button class="btn btn-secondary" ng-click="addRow(currentTab.title)">Add Row</button>
+				</div>
+				<div class="col-xs-3 col-xs-3 col-md-offset-2" style="margin: 0px;">
+					<button class="btn btn-secondary" ng-click="close()">Close</button>
 				</div>
 				<div class="col-xs-3">
 					<button class="btn btn-primary" ng-click="saveSwot()">Generate SWOT</button>
@@ -130,5 +133,4 @@
 			{{(threat.rating|number) * (threat.weight|number)}}
 		</div>
 	</div>
-</script>
 </script>

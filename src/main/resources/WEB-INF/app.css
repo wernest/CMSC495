@@ -41,6 +41,22 @@ div.container.ng-scope {
 	margin-right: 130px;
 }
 
+div.container-login-signin.ng-scope {
+	
+	border-radius: 10px;
+	background-color: #f2f2f2;
+	background: rgba(255, 255, 255, 0.3);
+	padding: 60px 20px 20px 20px;
+	width: 445px;
+	margin-top: 50px;
+	margin-left: 270px;
+	margin-right: 130px;
+	box-shadow: 20px 20px 20px;
+	
+}
+
+
+
 div.register-border.ng-scope {
 	
 	border-radius: 10px;
@@ -51,42 +67,27 @@ div.register-border.ng-scope {
 	margin-top: 50px;
 	margin-left: 270px;
 	margin-right: 130px;
+	box-shadow: 20px 20px 20px;
 }
 
 h2.form-signin-heading {
-	color: #fff !important;
+	color: #334 !important;
 	position: absolute;
 	top: 178px;
 	left: 160px;
 	height: 40px;
 	width: 400px;
 	padding: 10px;
-	font-family: 'Arimo', sans-serif;
 	font-size: 25px;
 	margin-left: 120px;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
+	text-align: center;
 }
 
-/*input[type=text] {*/
-    /*background: transparent;*/
-    /*border: 1px solid rgba(255, 255, 255, 0.6);*/
-    /*top: 500px;*/
-    /*left: 325px;*/
-    /*border-radius: 4px;*/
-    /*color: #fff;*/
-    /*font-family: 'Arimo', sans-serif;*/
-    /*font-size: 16px;*/
-    /*font-weight: 200;*/
-    /*width: 400px;*/
-    /*padding: 14px 20px;*/
-    /*margin: 8px 0;*/
-    /*cursor: pointer;*/
-/*}*/
-
-input[type=password] {
-    background: transparent;
+input.form-control-login-signin.ng-pristine.ng-untouched.ng-valid {
+	background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.6);
     top: 500px;
     left: 325px;
@@ -96,13 +97,13 @@ input[type=password] {
     font-size: 16px;
     font-weight: 200;
     width: 400px;
-    padding: 14px 20px;
-    margin: 8px 0;
+    padding: 7px 10px;
+    margin: 6px 0;
     cursor: pointer;
 }
 
-input[type=email] {
-    background: transparent;
+input.form-control-login-signin.ng-valid.ng-touched.ng-dirty.ng-valid.parse {
+	background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.6);
     top: 500px;
     left: 325px;
@@ -112,11 +113,186 @@ input[type=email] {
     font-size: 16px;
     font-weight: 200;
     width: 400px;
-    padding: 14px 20px;
-    margin: 8px 0;
+    padding: 7px 10px;
+    margin: 6px 0;
     cursor: pointer;
 }
 
+input.form-control-login-signin.ng-valid.ng-dirty.ng-valid-parse.ng-touched {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-untouched.ng-valid.ng-dirty.ng-valid-parse {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-pristine.ng-valid.ng-touched {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-pristine.ng-invalid.ng-invalid-required.ng-touched {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-touched.ng-dirty.ng-valid-parse.ng-valid.ng-valid-required {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required.ng-valid-minlength.has-error {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-invalid.has-error.ng-dirty.ng-valid-parse.ng-valid-required.ng-invalid-minlength.ng-touched {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-untouched.ng-invalid.has-error.ng-dirty.ng-valid-parse.ng-valid-required.ng-invalid-minlength {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.has-error.ng-invalid-required.ng-valid-minlength {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+input.form-control-login-signin.ng-untouched.ng-dirty.ng-valid-parse.ng-invalid.has-error.ng-invalid-required.ng-valid-minlength {
+	background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    top: 500px;
+    left: 325px;
+    border-radius: 4px;
+    color: #fff;
+    font-family: 'Arimo', sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    width: 400px;
+    padding: 7px 10px;
+    margin: 6px 0;
+    cursor: pointer;
+}
 
 button.btn.btn-lg.btn-primary.btn-block {
 	background: transparent;
@@ -170,6 +346,7 @@ li.navi-list a {
 	text-align: center;
 	padding: 14px 16px;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 li.navi-list a:hover {
@@ -215,6 +392,14 @@ h4.login-after-signin {
 	background-color: #f2f2f2;
 	background: rgba(255, 255, 255, 0.3);
 	border-radius: 10px;
+}
+
+div.text-center.col-md-8.col-md-offset-2.instruction-only {
+	background-color: #f2f2f2;
+	background: rgba(255, 255, 255, 0.3);
+	border-radius: 10px;
+	margin-top: 20px;
+	text-align: left;
 }
 
 button.swot-button.button-button.button1 {
