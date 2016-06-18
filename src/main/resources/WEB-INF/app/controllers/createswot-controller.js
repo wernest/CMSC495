@@ -56,6 +56,17 @@ app.controller('CreateSwotController', ["$scope", 'SwotResource', '$routeParams'
             }
             tempArray.push({factorType: tabTitle});
         };
+        
+        
+        
+        
+        $scope.close = function() {
+        	document.getElementById('instruction.col-md-10.col-md-offset-1.text-center.ng-scope').innerHTML = '';
+        };
+        
+        
+        
+        
 
         $scope.saveSwot = function(){
             if($scope.id == undefined) {
