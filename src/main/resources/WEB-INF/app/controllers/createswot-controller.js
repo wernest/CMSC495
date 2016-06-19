@@ -58,9 +58,7 @@ app.controller('CreateSwotController', ["$scope", 'SwotResource', '$routeParams'
         };
         
         $scope.close = function() {
-        	var closeForm = document.getElementById("swotForm");
-        	closeForm.parentNode.removeChild(closeForm);
-        	
+        	$location.url("/dashboard");
         };
        
         $scope.saveSwot = function(){
@@ -71,8 +69,9 @@ app.controller('CreateSwotController', ["$scope", 'SwotResource', '$routeParams'
                     stratsList: [],
                     factorsList: $scope.factors.concat($scope.weaknesses.concat($scope.opportunities.concat($scope.threats)))
                 };
+
                 swotResource.save(swotReport, function(resp, headers){
-                    $location.path("/dashboard/strats/" + $scope.swot.id);
+                    $location.path("/dashboard/strats/" + resp.id);
                 }, function(error){
                     if(error.status === 401){
                         $location.path("/");
