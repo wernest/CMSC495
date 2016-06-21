@@ -8,28 +8,20 @@ app.controller('RegisterController', ["$scope", "$http", "$location", "sharedPro
   $scope.signUp = function() {
 
     //Get data from Create New account form
-    var firstName = $scope.first_name;
-    var lastName = $scope.last_name;
+    var companyName = $scope.companyName;
     var userName = $scope.username;
     var email = $scope.email;
     var password = $scope.password;
+    var password2 = $scope.password2;
 
     //Try to create the account
     $http({method: "POST", url: '/api/register',
-      data: {'first_name': firstName, 'last_name': lastName, 'username': userName, 'email': email, 'password': password}
+      data: {'companyName': companyName, 'username': userName, 'email': email, 'password': password}
     }).success(function(data, status, headers, config) {
-
-      //Clear Create Account fields
-      $scope.first_name = "";
-      $scope.last_name = "";
-      $scope.username = "";
-      $scope.email = "";
-      $scope.password = "";
       sharedProperties.setUsername(userName);
       $location.path("/confirmation");
     }).
         error(function(data, status, headers, config) {
-          $window.alert("Error");
         });
   }
 

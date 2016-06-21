@@ -30,10 +30,7 @@ public class UserEntity implements Serializable{
     private String password;
 
     @Column(name="firstName")
-    private String firstName;
-
-    @Column(name="lastName")
-    private String lastName;
+    private String companyName;
 
     @JsonIgnore
     @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "userEntity")
@@ -85,19 +82,11 @@ public class UserEntity implements Serializable{
         this.username = username;
     }
 
-    public String getFirst_name() {
-        return firstName;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setFirst_name(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLast_name() {
-        return lastName;
-    }
-
-    public void setLast_name(String lastName) {
-        this.lastName = lastName;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }

@@ -14,9 +14,6 @@ import java.util.List;
 })
 public class SwotReport implements Serializable{
 
-    public enum Strength{
-        WEAK, STRONG, NULL
-    }
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer ID;
@@ -27,18 +24,6 @@ public class SwotReport implements Serializable{
     private UserEntity userEntity;
 
     private Date creationDate;
-
-    private double iFactorScore;
-
-    private double eFactorScore;
-
-    @Column(columnDefinition = "enum('WEAK', 'STRONG', 'NULL')")
-    @Enumerated(EnumType.STRING)
-    private Strength internalStrength;
-
-    @Column(columnDefinition = "enum('WEAK', 'STRONG', 'NULL')")
-    @Enumerated(EnumType.STRING)
-    private Strength externalStrength;
 
     @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
     public List<Strats> stratsList;
@@ -70,37 +55,5 @@ public class SwotReport implements Serializable{
 
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
-    }
-
-    public double getiFactorScore() {
-        return iFactorScore;
-    }
-
-    public void setiFactorScore(double iFactorScore) {
-        this.iFactorScore = iFactorScore;
-    }
-
-    public double geteFactorScore() {
-        return eFactorScore;
-    }
-
-    public void seteFactorScore(double eFactorScore) {
-        this.eFactorScore = eFactorScore;
-    }
-
-    public Strength getInternalStrength() {
-        return internalStrength;
-    }
-
-    public void setInternalStrength(Strength internalStrength) {
-        this.internalStrength = internalStrength;
-    }
-
-    public Strength getExternalStrength() {
-        return externalStrength;
-    }
-
-    public void setExternalStrength(Strength externalStrength) {
-        this.externalStrength = externalStrength;
     }
 }

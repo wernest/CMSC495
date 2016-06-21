@@ -1,14 +1,14 @@
 var myApp = angular.module('swotapp.login', [
-    'swotapp.shared'
+    'swotapp.auth'
 ]);
 
-myApp.controller('LoginController', ["$scope", "$location", "$http", 'sharedProperties', function($scope, $location, $http, sharedProperties) {
+myApp.controller('LoginController', ["$scope", "$location", "$http", 'AuthService', function($scope, $location, $http, auth) {
 
     $http.get("/api/login").then(function(response){
-        sharedProperties.setOauthToken(response.data);
+        auth.setOauthToken(response.data);
         $location.path("/dashboard");
     }, function(response){
-        sharedProperties.setOauthToken("");
+        auth.setOauthToken("");
     });
 
     $scope.submitFunction = function() {
@@ -21,7 +21,7 @@ myApp.controller('LoginController', ["$scope", "$location", "$http", 'sharedProp
             data: {'username': username, 'password': password}
         }).success(function(data, status, headers, config) {
             $location.path("/dashboard");
-            sharedProperties.setOauthToken(data);
+            auth.setOauthToken(data);
 
         }).
             error(function(data, status, headers, config) {
