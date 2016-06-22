@@ -50,8 +50,6 @@ app.controller('CreateSwotController', ["$scope", 'sharedProperties', '$location
         $scope.saveSwot = function(){
             if($scope.id == undefined) {
                 var swotReport = {
-                    iFactorScore: 0.0,
-                    eFactorScore: 0.0,
                     stratsList: [],
                     factorsList: $scope.factors.concat($scope.weaknesses.concat($scope.opportunities.concat($scope.threats)))
                 };

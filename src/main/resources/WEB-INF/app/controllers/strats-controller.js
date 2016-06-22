@@ -19,7 +19,7 @@ app.controller('StratsController', ["$scope", 'SwotResource', '$routeParams', '$
                     $scope.so.push(swot.stratsList[ndx]);
                 } else if (swot.stratsList[ndx].stratType === 'WO') {
                     $scope.wo.push(swot.stratsList[ndx]);
-                } else if (swot.st[ndx].stratType === 'ST') {
+                } else if (swot.stratsList[ndx].stratType === 'ST') {
                     $scope.st.push(swot.stratsList[ndx]);
                 } else { // 'WT'
                     $scope.wt.push(swot.stratsList[ndx]);
