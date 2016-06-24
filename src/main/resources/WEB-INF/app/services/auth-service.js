@@ -1,7 +1,7 @@
 var app = angular.module('swotapp.auth', []);
 
 app.service('AuthService', function() {
-    var oauthToken = "";
+    var oauthToken = sessionStorage.getItem("cmsc495_token");
 
     return {
         getOauthToken: function() {
@@ -9,6 +9,7 @@ app.service('AuthService', function() {
         },
         setOauthToken: function(value) {
             oauthToken = value;
+            sessionStorage.setItem("cmsc495_token", value);
         }
     };
 });

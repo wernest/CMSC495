@@ -19,19 +19,19 @@ myApp.controller('NavBarCtrl', ['$scope', '$route', '$location', '$http', '$log'
     };
 
     $scope.isRouteActive = function (route) {
-            if(route === $location.path())
-                return true;
+        if(route === $location.path())
+            return true;
     };
 
 
-  $scope.logout = function() {
+    $scope.logout = function() {
 
-    $http({method: "GET", url: '/api/logout'
-    }).success(function(data, status, headers, config) {
-        $location.path("/");
-    }).
-        error(function(data, status, headers, config) {
-            $log.error(data);
-        });
-  }
+        $http({method: "GET", url: '/api/logout'
+        }).success(function(data, status, headers, config) {
+            $location.path("/");
+        }).
+            error(function(data, status, headers, config) {
+                $location.path("/");
+            });
+    }
 }]);

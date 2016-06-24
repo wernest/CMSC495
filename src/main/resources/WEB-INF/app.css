@@ -631,3 +631,8 @@ td.td-fac {
 	width: 95%;
 	border: 1px solid #b3b3b3;
 }
+
+.col-centered{
+	float:none;
+	margin: 0 auto;
+}
