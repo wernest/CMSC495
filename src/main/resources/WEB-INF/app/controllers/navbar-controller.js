@@ -1,7 +1,11 @@
-var myApp = angular.module('swotapp.navbar', ['ui.bootstrap', 'swotapp.shared']);
+var myApp = angular.module('swotapp.navbar', [
+    'ui.bootstrap',
+    'swotapp.shared',
+    'swotapp.auth']);
 
 
-myApp.controller('NavBarCtrl', ['$scope', '$route', '$location', '$http', '$log', 'sharedProperties', function($scope, $route, $location, $http, $log, sharedProperties){
+myApp.controller('NavBarCtrl', ['$scope', '$route', '$location', '$http', 'AuthService',
+    function($scope, $route, $location, $http, auth){
 
     $scope.createNew = function(){
         if($location.path() === "/dashboard/swot") {
@@ -29,9 +33,12 @@ myApp.controller('NavBarCtrl', ['$scope', '$route', '$location', '$http', '$log'
         $http({method: "GET", url: '/api/logout'
         }).success(function(data, status, headers, config) {
             $location.path("/");
+            auth.setOauthToken("");
         }).
             error(function(data, status, headers, config) {
                 $location.path("/");
+                auth.setOauthToken("");
+
             });
     }
 }]);

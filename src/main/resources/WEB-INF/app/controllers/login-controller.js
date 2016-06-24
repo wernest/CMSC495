@@ -20,12 +20,11 @@ myApp.controller('LoginController', ["$scope", "$location", "$http", 'AuthServic
         $http({method: "POST", url: '/api/login',
             data: {'username': username, 'password': password}
         }).success(function(data, status, headers, config) {
-            $location.path("/dashboard");
             auth.setOauthToken(data);
-
+            $location.path("/dashboard");
         }).
             error(function(data, status, headers, config) {
-
+                auth.setOauthToken("");
             });
     }
 }]);
