@@ -1,66 +1,79 @@
 <nav-bar></nav-bar>
 
-<h2 class="text-center lead"><b>SWOT RESULTS</b></h2>
+<div class="row">
+	<div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
+	<div class="col-lg-6 col-md-8 col-sm-10 col-xs-10">
 
-
-<div ng-controller="FactorsController">
-	<div class="container form-swot-table">
-		<div class="row" style="display: flex">
-			<div class="table-cell col-lg-1 col-md-2 col-sm-2 col-xs-2 th-result-rotate-SOp">Internal Score is {{ internalScore }}</div>
-			<div class="table-cell col-lg-4 col-md-5 col-sm-5 col-xs-5 th-result-title-sp">
-				<div class="row">Strengths S</div>
-				<div class="row" ng-repeat="strength in strengths">{{strength.description}}</div>
+		<h2 class="text-center lead"><b>SWOT RESULTS</b></h2>
+		<div ng-controller="FactorsController">
+			<div class="container form-swot-table">
+			
+				<div class="row" style="display: flex">
+					<div class="table-cell col-lg-1 col-md-1 col-sm-1 col-xs-1 whiteCell">Internal Score is {{ internalScore }}</div>
+					<div class="table-cell col-lg-2 col-md-3 col-sm-4 col-xs-4 blueCell">
+						<div class="row">Strengths S</div>
+						<div class="row" ng-repeat="strength in strengths">{{strength.description}}</div>
+					</div>
+					<div class="table-cell col-lg-2 col-md-3 col-sm-4 col-xs-4 yellowCell">
+						<div class="row">Weaknesses S</div>
+						<div class="row" ng-repeat="weak in weaknesses">{{weak.description}}</div>
+					</div>
+					<div class="table-cell col-lg-1 col-md-1 col-sm-1 col-xs-1 whiteCell">Internal Status is {{ internalStatus }}</div>
+				</div>
+				
+				<div class="row" style="display: flex">
+					<div class="table-cell col-lg-1 col-md-1 col-sm-1 col-xs-1 whiteCell">External Score is {{ externalScore }}</div>
+					<div class="table-cell col-lg-2 col-md-3 col-sm-4 col-xs-4 greenCell">
+						<div class="row">Opportunities O</div>
+						<div class="row" ng-repeat="opp in opportunities">{{opp.description}}</div>
+					</div>
+					<div class="table-cell col-lg-2 col-md-3 col-sm-4 col-xs-4 redCell">
+						<div class="row">Threats T</div>
+						<div class="row" ng-repeat="threat in threats">{{threat.description}}</div>
+					</div>
+					<div class="table-cell col-lg-1 col-md-1 col-sm-1 col-xs-1 whiteCell">External Status is {{ externalStatus }}</div>
+				</div>
+				
 			</div>
-			<div class="table-cell col-lg-4 col-md-5 col-sm-5 col-xs-5 th-result-title-wp">
-				<div class="row">Weaknesses S</div>
-				<div class="row" ng-repeat="weak in weaknesses">{{weak.description}}</div>
-			</div>
-			<div class="table-cell col-lg-1 col-md-2 col-sm-2 col-xs-2  th-result-rotate-WTp">Internal Status is {{ internalStatus }}</div>
 		</div>
-		<div class="row" style="display: flex">
-			<div class="table-cell col-lg-1 col-md-2 col-sm-2 col-xs-2  th-result-rotate-SOp">External Score is {{ externalScore }}</div>
-			<div class="table-cell col-lg-4 col-md-5 col-sm-5 col-xs-5 th-result-title-op">
-				<div class="row">Opportunities O</div>
-				<div class="row" ng-repeat="opp in opportunities">{{opp.description}}</div>
+
+
+
+		<h2 class="text-center lead"><b>CREATE YOUR STRATEGIES</b></h2>
+		<div class="instruction-text text-center" ng-controller="TabsController"  style="margin: 20px;">
+			<div class="row">
+				<div class="text-center">
+					<button class="swot-button button-button"
+						ng-repeat="tab in tabs"
+						ng-class="{active:isActiveTab(tab.url)}"
+						ng-click="onClickTab(tab)">{{tab.title}}</button>
+				</div>
 			</div>
-			<div class="table-cell col-lg-4 col-md-5 col-sm-5 col-xs-5 th-result-title-tp">
-				<div class="row">Threats T</div>
-				<div class="row" ng-repeat="threat in threats">{{threat.description}}</div>
+
+			<div class="instruction col-md-10 col-md-offset-1 text-center" ng-controller="StratsController">
+				<form id="swotForm">
+					<div ng-include="currentTab.url"></div>
+					<div class="row col-md-12 col-md-offset-4" style="margin: 20px;">
+						<div class="col-xs-3 col-xs-3 col-md-offset-2">
+							<button class="btn btn-secondary addRowCloseBtn" ng-click="addRow(currentTab.title)">Add Row</button>
+						</div>
+						<div class="col-xs-3 col-xs-3 col-md-offset-2" style="margin: 0px;">
+							<button class="btn btn-secondary addRowCloseBtn" ng-click="close()">Close</button>
+						</div>
+						<div class="col-xs-3">
+							<button class="btn btn-primary createSWOTBtn" ng-click="saveSwot()">Create Strategies</button>
+						</div>
+					</div>
+				</form>
 			</div>
-			<div class="table-cell col-lg-1 col-md-2 col-sm-2 col-xs-2  th-result-rotate-WTp">External Status is {{ externalStatus }}</div>
+			
 		</div>
 	</div>
+	<div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
 </div>
 
-<h2 class="text-center lead"><b>CREATE YOUR STRATEGIES</b></h2>
 
-<div class="instruction-text text-center" ng-controller="TabsController"  style="margin: 20px;">
-	<div class="row">
-		<div class="text-center">
-			<button class="swot-button button-button"
-					ng-repeat="tab in tabs"
-					ng-class="{active:isActiveTab(tab.url)}"
-					ng-click="onClickTab(tab)">{{tab.title}}</button>
-		</div>
-	</div>
 
-	<div class="instruction col-md-10 col-md-offset-1 text-center" ng-controller="StratsController">
-		<form id="swotForm">
-			<div ng-include="currentTab.url"></div>
-			<div class="row col-md-12 col-md-offset-4" style="margin: 20px;">
-				<div class="col-xs-3 col-xs-3 col-md-offset-2">
-					<button class="btn btn-secondary" ng-click="addRow(currentTab.title)">Add Row</button>
-				</div>
-				<div class="col-xs-3 col-xs-3 col-md-offset-2" style="margin: 0px;">
-					<button class="btn btn-secondary" ng-click="close()">Close</button>
-				</div>
-				<div class="col-xs-3">
-					<button class="btn btn-primary" ng-click="saveSwot()">Create Strategies</button>
-				</div>
-			</div>
-		</form>
-	</div>
-</div>
 
 <script type="text/ng-template" id="so.tpl.html">
 	<div><h2>Strength Opportunities</h2></div>

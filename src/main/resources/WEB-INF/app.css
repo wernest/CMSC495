@@ -4,12 +4,7 @@
     font-weight: bold;
 }
 
-html {
-	height: 100%;
-	box-sizing: border-box;
-}
-
-h1.header-top {
+.header-top {
 	padding-left: 2cm;
 	padding-bottom: 1cm;
 	padding-top: 1cm;
@@ -18,329 +13,44 @@ h1.header-top {
 	font-weight: bold;
 }
 
-body {
-	background-image: url("img/background.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	position: relative;
-	margin: 0;
-	padding-bottom: 6rem;
-	min-height: 100%;
+.body-class {
+   background-image: url("img/background.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
-
-div.container.ng-scope {
-	
-	border-radius: 10px;
-	background-color: #f2f2f2;
-	background: rgba(255, 255, 255, 0.3);
-	padding: 60px 20px 20px 20px;
-	width: 445px;
-	margin-top: 50px;
-	margin-left: 270px;
-	margin-right: 130px;
+.container-login-signin { 
+   border-radius: 10px;
+   background-color: #f2f2f2;
+   background: rgba(255, 255, 255, 0.3);
+   padding: 20px;
+   box-shadow: 20px 20px 20px;
+   text-align: center;
 }
 
-div.container-login-signin.ng-scope {
-	
-	border-radius: 10px;
-	background-color: #f2f2f2;
-	background: rgba(255, 255, 255, 0.3);
-	padding: 60px 20px 20px 20px;
-	width: 445px;
-	margin-top: 50px;
-	margin-left: 270px;
-	margin-right: 130px;
-	box-shadow: 20px 20px 20px;
-	
+.textField {
+	margin-bottom: 5px;
 }
 
-
-
-div.register-border.ng-scope {
-	
-	border-radius: 10px;
-	background-color: #f2f2f2;
-	background: rgba(255, 255, 255, 0.3);
-	padding: 60px 20px 20px 20px;
-	width: 445px;
-	margin-top: 50px;
-	margin-left: 270px;
-	margin-right: 130px;
-	box-shadow: 20px 20px 20px;
-}
-
-h2.form-signin-heading {
-	color: #334 !important;
-	position: absolute;
-	top: 178px;
-	left: 160px;
-	height: 40px;
-	width: 400px;
-	padding: 10px;
-	font-size: 25px;
-	margin-left: 120px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-	padding-bottom: 0px;
+.no-account-signupH {
 	text-align: center;
-}
-
-input.form-control-login-signin.ng-pristine.ng-untouched.ng-valid {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-valid.ng-touched.ng-dirty.ng-valid.parse {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-valid.ng-dirty.ng-valid-parse.ng-touched {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-untouched.ng-valid.ng-dirty.ng-valid-parse {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-pristine.ng-valid.ng-touched {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-pristine.ng-invalid.ng-invalid-required.ng-touched {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-touched.ng-dirty.ng-valid-parse.ng-valid.ng-valid-required {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-pristine.ng-untouched.ng-invalid.ng-invalid-required.ng-valid-minlength.has-error {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-invalid.has-error.ng-dirty.ng-valid-parse.ng-valid-required.ng-invalid-minlength.ng-touched {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-untouched.ng-invalid.has-error.ng-dirty.ng-valid-parse.ng-valid-required.ng-invalid-minlength {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-dirty.ng-valid-parse.ng-touched.ng-invalid.has-error.ng-invalid-required.ng-valid-minlength {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-input.form-control-login-signin.ng-untouched.ng-dirty.ng-valid-parse.ng-invalid.has-error.ng-invalid-required.ng-valid-minlength {
-	background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    top: 500px;
-    left: 325px;
-    border-radius: 4px;
-    color: #fff;
-    font-family: 'Arimo', sans-serif;
-    font-size: 16px;
-    font-weight: 200;
-    width: 400px;
-    padding: 7px 10px;
-    margin: 6px 0;
-    cursor: pointer;
-}
-
-button.btn.btn-lg.btn-primary.btn-block {
-	background: transparent;
-	background-color: #b3d1ff;
-	border: 1px solid rgba(255, 255, 255, 0.6);
-	width: 400px;
-}
-
-button.btn.btn-lg.btn-primary.btn-block:hover {
-	background: transparent;
-	background-color: #99c2ff;
-	border: 1px solid rgba(255, 255, 255, 0.6);
-	width: 400px;
-}
-
-h6.no-account-signup {
-	margin-left: 168px;
 	font-size: 14px;
+	outline: none;
 }
 
-div.footer {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	padding: 1rem;
-	text-align: center;
-	font-style: italic;
-}
-
-h5.view-report {
-	text-align: center;
-	padding: 0;
-}
-
-ul.navi {
+.navi {
 	list-style-type: none;
-	margin: 0;
+	margin-bottom: 20px;
 	overflow: hidden;
 	background-color: #262626;
 	padding-left: 2cm;
 }
 
-li.navi-list {
+.navi-list {
 	float: left;
 }
 
-li.navi-list a {
+.navi-list a {
 	display: block;
 	color: white;
 	text-align: center;
@@ -349,11 +59,26 @@ li.navi-list a {
 	cursor: pointer;
 }
 
-li.navi-list a:hover {
+.navi-list a:hover {
 	background-color: #111;
 }
 
-button.swot-button {
+.footer {
+	/*position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	padding: 1rem;*/
+	text-align: center;
+	font-style: italic;
+}
+
+.view-report {
+	text-align: center;
+	padding: 0;
+}
+
+.swot-button {
 	background-color: #b3d1ff;
 	border: none;
 	padding: 16px 32px;
@@ -361,278 +86,148 @@ button.swot-button {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	margin: 4px 2px;
+	margin: 20px 8px;
 	-webkit-transition-duration: 0.4s;
 	transition-duration: 0.4s;
 	cursor: pointer;
-	margin-top: 0px;
 }
 
-button.button-button {
+.button-button {
 	background-color: #b3d1ff;
 	color: black;
 	background:rgba(255,255,255,0.5);
 	border-radius: 10px;
 	padding-top: 7px;
 	padding-bottom: 7px;
+	outline: none;
 }
 
-button.button-button:hover {
+.button-button:hover {
 	background-color: #99c2ff;
 	color: gray;
 	background:rgba(255,255,255,0.9);
+	outline: none;
 }
 
-h4.login-after-signin {
+.login-after-signin {
 	text-align: center;
 	font-family: 'Arimo', sans-serif;
+	outline: none;
 }
 
 .instruction {
 	background-color: #f2f2f2;
 	background: rgba(255, 255, 255, 0.3);
 	border-radius: 10px;
+	margin-bottom: 30px;
 }
 
-div.text-center.col-md-8.col-md-offset-2.instruction-only {
+.instructionH {
 	background-color: #f2f2f2;
 	background: rgba(255, 255, 255, 0.3);
 	border-radius: 10px;
-	margin-top: 20px;
 	text-align: left;
 }
 
-button.swot-button.button-button.button1 {
-	margin-right: 20px;
-	margin-left: 140px;
-	background-color: #99c2ff;
-}
-
-button.swot-button.button-button.button2 {
-	margin-right: 20px;
-	margin-left: 20px;
-	background-color: #99c2ff;
-}
-
-button.swot-button.button-button.button3 {
-	margin-right: 20px;
-	margin-left: 20px;
-	background-color: #99c2ff;
-}
-
-button.swot-button.button-button.button4 {
-	margin-right: 100px;
-	margin-left: 20px;
-	background-color: #99c2ff;
-}
-
-button.swot-button.button-button.button1:hover {
-	margin-right: 20px;
-	margin-left: 165px;
-	background-color: #66a3ff;
-}
-
-button.swot-button.button-button.button2:hover {
-	margin-right: 20px;
-	margin-left: 20px;
-	background-color: #66a3ff;
-}
-
-button.swot-button.button-button.button3:hover {
-	margin-right: 20px;
-	margin-left: 20px;
-	background-color: #66a3ff;
-}
-
-button.swot-button.button-button.button4:hover {
-	margin-right: 100px;
-	margin-left: 20px;
-	background-color: #66a3ff;
-}
-
-input.tb-text {
-	padding-botton: 0px;
-	padding-top: 0px;
-	border-top-width: 0px;
-	border-botton-width: 0px;
-	border-left-width: 0px;
-	border-right-width: 0px;
-}
-
-button.generateSWOT {
+.addRowCloseBtn {
 	background: transparent;
 	background-color: #99c2ff;
 	border: 1px solid rgba(255, 255, 255, 0.6);
-	width: 410px;
-	height: 44px;
 	border-radius: 10px;
-	margin-left: 300px;
+	color: white;
+	outline: none;
 }
 
-button.generateSWOT:hover {
+.addRowCloseBtn:hover {
 	background: transparent;
 	background-color: #66a3ff;
 	border: 1px solid rgba(255, 255, 255, 0.6);
-	width: 410px;
-	height: 44px;
+	color: white;
+	outline: none;
 }
 
-p.report-name {
-	text-align: center;
-	font-size: 20px;
-	font-weight: bold;
-	font-family: 'Arimo', sans-serif;
-	margin-top: 20px;
+.createSWOTBtn {
+	background: transparent;
+	background-color: #99c2ff;
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	border-radius: 10px;
+	color: white;
+	outline: none;
 }
 
-table, th, td {
-	border-collapse: collapse;
+.createSWOTBtn:hover {
+	background: transparent;
+	background-color: #66a3ff;
+	border: 1px solid rgba(255, 255, 255, 0.6);
+	color: white;
+	outline: none;
 }
 
-th, td {
-	padding: 5px;
-	text-align: left;
-}
-
-td.td-pink {
-	border-bottom-color: #000000;
-}
-
-.th-company {
-	background-color: #ffffe6;
-	width: 33%;
-	border-top: solid;
-	border-left: solid;
-	border-right: solid;
-	border-color: #d9d9d9;
-}
-
-.td-company {
-	background-color: #ffffe6;
-	width: 33%;
-	border-left: solid;
-	border-bottom: solid;
-	border-right: solid;
-	border-color: #d9d9d9;
-}
-
-.th-pink {
-	background-color: #ffcccc;
-	width: 33%;
-	border-top: solid;
-	border-right: solid;
-	border-color: #d9d9d9;
-}
-
-.td-pink {
-	background-color: #ffcccc;
-	width: 33%;
-	border-bottom: solid;
-	border-right: solid;
-	border-color: #d9d9d9;
-}
-
-.th-blue {
-	background-color: #ccffff;
-	width: 33%;
-	border-left: solid;
-	border-right: solid;
-	border-color: #d9d9d9;
-}
-
-.td-blue {
-	background-color: #ccffff;
-	width: 33%;
-	border-left: solid;
-	border-bottom: solid;
-	border-right: solid;
-	border-color: #d9d9d9;
-}
-
-.th-green {
-	background-color: #ccffcc;
-	width: 33%;
-	border-right: solid;
-	border-color: #d9d9d9;
-}
-
-.td-green {
-	background-color: #ccffcc;
-	width: 33%;
-	border-bottom: solid;
-	border-right: solid;
-	border-color: #d9d9d9;
-}
-
-.form-swot-table {
-	border: 1px solid #b3b3b3;
-}
-
-.th-swot {
-	border: 1px solid #b3b3b3;
-}
-
-.td-swot {
-	border: 1px solid #b3b3b3;
-}
-
-.th-result-title-sp {
+.blueCell {
 	border: 1px solid #b3b3b3;
 	background-color: #0033cc;
 }
 
-.th-result-title-wp {
+.yellowCell {
 	border: 1px solid #b3b3b3;
 	background-color: #ffff00;
 }
 
-.th-result-title-op {
+.greenCell {
 	border: 1px solid #b3b3b3;
 	background-color: #33cc33;
 }
 
-.th-result-title-tp {
+.redCell {
 	border: 1px solid #b3b3b3;
 	background-color: #cc0000;
 }
 
-.th-result-rotate-SOp {
+.whiteCell {
 	border: 1px solid #b3b3b3;
 	background-color: #ffffff;
-	width: 10%;
+	word-wrap: break-word;
 }
 
-.th-result-rotate-WTp {
-	border: 1px solid #b3b3b3;
-	background-color: #ffffff;
+.view-title {
+	font-size: 18px;
+	font-weight: bold;
+	word-wrap: break-word;
+	text-align: left;
 }
 
-table.form-swot-table-create {
-	border: 1px solid #b3b3b3;
-	width: 100%;
-}
-				
-th.th-create {
-	width: 5%;
-	border: 1px solid #b3b3b3;
-}
-
-th.th-fac {
-	width: 95%;
-	border: 1px solid #b3b3b3;
+.view-company {
+	background-color: #ffffe6;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+	word-wrap: break-word;
+	text-align: left;
 }
 
-td.td-create {
-	width: 5%;
-	border: 1px solid #b3b3b3;
+.view-green {
+	background-color: #ccffcc;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+	word-wrap: break-word;
+	text-align: left;
 }
 
-td.td-fac {
-	width: 95%;
-	border: 1px solid #b3b3b3;
+.view-blue {
+	background-color: #ccffff;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+	word-wrap: break-word;
+	text-align: left;
 }
 
-.col-centered{
-	float:none;
-	margin: 0 auto;
+.view-pink {
+	background-color: #ffcccc;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #d9d9d9;
+	word-wrap: break-word;
+	text-align: left;
 }

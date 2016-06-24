@@ -1,7 +1,7 @@
 <nav-bar></nav-bar>
 
 <div class="row">
-	<div class="text-center col-md-8 col-md-offset-2 instruction-only">
+	<div class="text-center col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 instructionH">
 		<p>Instructions:</p>
 		<ol>
 			<li>Click on each letter box.</li>
@@ -23,18 +23,18 @@
 		</div>
 	</div>
 
-	<div class="instruction col-md-10 col-md-offset-1 text-center" ng-controller="CreateSwotController">
+	<div class="instruction col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 text-center" ng-controller="CreateSwotController">
 		<form id="swotForm">
 			<div ng-include="currentTab.url"></div>
 			<div class="row col-md-12 col-md-offset-4" style="margin: 20px;">
 				<div class="col-xs-3 col-xs-3 col-md-offset-2">
-					<button class="btn btn-secondary" ng-click="addRow(currentTab.title)">Add Row</button>
+					<button class="btn btn-secondary addRowCloseBtn" ng-click="addRow(currentTab.title)">Add Row</button>
 				</div>
 				<div class="col-xs-3 col-xs-3 col-md-offset-2" style="margin: 0px;">
-					<button class="btn btn-secondary" ng-click="close()">Close</button>
+					<button class="btn btn-secondary addRowCloseBtn" ng-click="close()">Close</button>
 				</div>
 				<div class="col-xs-3">
-					<button class="btn btn-primary" ng-click="saveSwot()">Generate SWOT</button>
+					<button class="btn btn-primary createSWOTBtn" ng-click="saveSwot()">Generate SWOT</button>
 				</div>
 			</div>
 		</form>

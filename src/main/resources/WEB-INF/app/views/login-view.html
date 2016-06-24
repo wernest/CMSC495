@@ -1,15 +1,18 @@
 <h1 class="header-top">SWOT ANALYSIS</h1>
-	
 
-<div class="container-login-signin"  ng-controller="LoginController">
-    <h2 class="form-signin-heading">Login</h2>
-
-    <form class="form-signin" role="form" ng-submit="submitFunction()">
-
-        <input type="text" class="form-control-login-signin" placeholder="Username" ng-model="username">
-        <input type="password" class="form-control-login-signin" placeholder="Password" ng-model="password">
-        <button class="btn btn-lg btn-primary btn-block">Sign In</button>
-        
-    </form>
-    <h6 class = "no-account-signup"><a href="/#/register">Or <u>Signup</u></a></h6>
+<!-- Adding a row -->
+<div class="row">
+	<div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
+	<div class="col-lg-4 col-md-6 col-sm-8 col-xs-10">
+		<div class="container-login-signin"  ng-controller="LoginController">
+    		<h2 class="text-center lead">Login</h2>
+    		<form class="form-signin" role="form" ng-submit="submitFunction()">
+        		<input type="text" class="form-control textField" placeholder="Username" ng-model="username">
+        		<input type="password" class="form-control textField" placeholder="Password" ng-model="password">
+        		<button class="btn btn-primary btn-block">Sign In</button>
+    		</form>
+    		<h6 class = "no-account-signupH"><a href="/#/register">Or <u>Signup</u></a></h6>
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-3 col-sm-2 col-xs-1"></div>
 </div>
