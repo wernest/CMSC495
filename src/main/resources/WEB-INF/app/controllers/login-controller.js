@@ -25,6 +25,10 @@ myApp.controller('LoginController', ["$scope", "$location", "$http", 'AuthServic
         }).
             error(function(data, status, headers, config) {
                 auth.setOauthToken("");
+                if(status === 401){
+                    $scope.serverError = data.errors;
+                    $scope.loginForm.$setValidity('server', false);
+                }
             });
     }
 }]);

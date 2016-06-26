@@ -29,7 +29,6 @@ public class UserEntity implements Serializable{
 
     private String password;
 
-    @Column(name="firstName")
     private String companyName;
 
     @JsonIgnore

@@ -4,6 +4,11 @@
     font-weight: bold;
 }
 
+.has-error{
+	color: #D8000C;
+	border: 2px #D8000C;
+}
+
 .header-top {
 	padding-left: 2cm;
 	padding-bottom: 1cm;

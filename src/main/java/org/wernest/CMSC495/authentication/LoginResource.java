@@ -1,6 +1,8 @@
 package org.wernest.CMSC495.authentication;
 
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.wernest.CMSC495.api.BaseResource;
 import org.wernest.CMSC495.dao.UserEntityDAO;
 import org.wernest.CMSC495.dao.UserTokenDAO;
@@ -11,6 +13,8 @@ import org.wernest.CMSC495.entities.UserToken;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by will on 5/22/16.
@@ -36,7 +40,13 @@ public class LoginResource extends BaseResource{
             return Response.ok(token).cookie(newCookie).build();
 
         } catch (Exception e) {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("errors", "Invalid username or password. Please try again.");
+            Gson gson = new Gson();
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity(gson.toJson(jsonObject))
+                    .type(MediaType.APPLICATION_JSON_TYPE)
+                    .build();
         }
     }
 
