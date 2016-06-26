@@ -1,61 +1,71 @@
 <nav-bar></nav-bar>
-	
 
-<h2 class="text-center lead"><b>Report Name</b></h2>
+<div ng-controller="SwotController as swot">
+	<h2 class="text-center lead"><b>{{ creationDate }}</b></h2>
+	<div class="container">
+		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+			<div class="row" style="display: flex;">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-company">
+					<div class="row view-title">{{ user.companyName }}</div>
+				</div>
 
-<div class="container">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-pink">
+					<div class="row view-title">Strengths - S</div>
+					<div class="row" ng-repeat="factor in strengths">
+						{{factor.description}}
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-pink">
+					<div class="row view-title">Weaknesses - W</div>
+					<div class="row" ng-repeat="factor in weaknesses">
+						{{factor.description}}
+					</div>
+				</div>
+			</div>
 
-<div class="row">
+			<div class="row" style="display:flex">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-blue">
+					<div class="row view-title">Opportunities - O</div>
+					<div class="row" ng-repeat="factor in opportunities">
+						{{factor.description}}
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
+					<div class="row view-title">SO strategies</div>
+					<div class="row" ng-repeat="strat in so">
+						{{strat.description}}
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
+					<div class="row view-title">WO strategies</div>
+					<div class="row" ng-repeat="strat in wo">
+						{{strat.description}}
+					</div>
+				</div>
+			</div>
 
-	<div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
-	<div class="col-lg-6 col-md-8 col-sm-10 col-xs-10">
-	<div class="row" style="display:flex">
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-company">
-			<div class="row view-title">The Company Name</div>
-			<div class="row"></div>
-		</div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-pink">
-			<div class="row view-title">Strengths - S</div>
-			<div class="row">sdkfjdfkljfdfj df dfj<br>skdjfldksfj<br>sdlkfjlsdfjldsfjldskfjdlkfj<br>lsdfjsfidskfjsdkfjdfjl</div>
-		</div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-pink">
-			<div class="row view-title">Weaknesses - W</div>
-			<div class="row">Blablbblblblb<br>bdskfjsdlkfjsdlfkjsdklfjsdklfjsdlkfjds<br>sdkfjsdkfjskldfjsldfjsldkfjkdfjsdkfjsf</div>
+			<div class="row" style="display:flex">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-blue">
+					<div class="row view-title">Threats - T</div>
+					<div class="row" ng-repeat="factor in threats">
+						{{factor.description}}
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
+					<div class="row view-title">ST strategies</div>
+					<div ng-repeat="strat in st">
+						<div class="row">
+							{{strat.description}}
+						</div>						</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
+					<div class="row view-title">WT strategies</div>
+					<div class ="row" ng-repeat="strat in wt">
+						{{strat.description}}
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
-	
-	<div class="row" style="display:flex">
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-blue">
-			<div class="row view-title">Opportunities - O</div>
-			<div class="row">Blablbblblblb<br>bdskfjsdlkfjsdlfkj<br>sdklfjsdklfjsdlkfjds<br>sdkfjsdkfjskldfjsldfjsldkfjkdfjsdkfjsf</div>
-		</div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
-			<div class="row view-title">SO strategies</div>
-			<div class="row">sdkfjdfkljfdfj df dfj<br>sdlkfjlsdfjldsfjldskfjdlkfj<br>lsdfjsfidskfjsdkfjdfjl</div>
-		</div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
-			<div class="row view-title">WO strategies</div>
-			<div class="row">Blablbblblblb<br>bdskfjsdlkfjsdlfkjsdklfjsdklfjsdlkfjds<br>sdkfjsdkfjskldfjsldfjsldkfjkdfjsdkfjsf</div>
-		</div>
-	</div>
-	
-	<div class="row" style="display:flex">
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-blue">
-			<div class="row view-title">Threats - T</div>
-			<div class="row">Blablbblblblb<br>bdskfjsdlkfjsdlfkjsdklfjsdklfjsdlkfjds<br>sdkfjsdkfjskldfjsldfjsldkfjkdfjsdkfjsf</div>
-		</div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
-			<div class="row view-title">ST strategies</div>
-			<div class="row">sdkfjdfkljfdfj df dfj<br>sdlkfjlsdfjldsfjldskfjdlkfj<br>lsdfjsfidskfjsdkfjdfjl</div>
-		</div>
-		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
-			<div class="row view-title">WT strategies</div>
-			<div class="row">Blablbblblblb<br>bdskfjsdlkfjsdlfkjsdklfjsdklfjsdlkfjds<br>sdkfjsdkfjskldfjsldfjsldkfjkdfjsdkfjsf</div>
-		</div>
-	</div>
-	
-	
-	</div>
-	<div class="col-lg-3 col-md-2 col-sm-2 col-xs-2"></div>
-</div>
 </div>

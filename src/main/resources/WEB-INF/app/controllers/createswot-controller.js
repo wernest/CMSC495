@@ -54,6 +54,8 @@ app.controller('CreateSwotController', ["$scope", 'sharedProperties', '$location
                     factorsList: $scope.factors.concat($scope.weaknesses.concat($scope.opportunities.concat($scope.threats)))
                 };
 
+                swotReport.factorsList = cleanEmptyRows(swotReport.factorsList);
+
                 swotResource.save(swotReport, function(resp, headers){
                     sharedProperties.setSwot(resp);
                     $location.path("/dashboard/strats/" + resp.id);
@@ -64,12 +66,24 @@ app.controller('CreateSwotController', ["$scope", 'sharedProperties', '$location
                 });
             } else{
                 $scope.swot.factorsList = $scope.factors.concat($scope.weaknesses.concat($scope.opportunities.concat($scope.threats)));
+                $scope.swot.factorsList = cleanEmptyRows($scope.swot.factorsList);
                 $scope.swot.$save(function(resp, header){
                     $location.path("/dashboard/strats/" + $scope.swot.id);
                 });
             }
 
         };
+
+        function cleanEmptyRows(factors){
+            for(var ndx = 0; ndx < factors.length; ndx++){
+                if(!factors[ndx].description ||
+                    factors[ndx].description === "" ||
+                    factors[ndx].description === null){
+                    factors.splice(ndx--, 1);
+                }
+            }
+            return factors;
+        }
 
         function addRowIfEmpty(){
             if ($scope.factors.length === 0) {

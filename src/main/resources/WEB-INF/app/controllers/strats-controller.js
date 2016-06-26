@@ -54,13 +54,24 @@ app.controller('StratsController', ["$scope", 'SwotResource', '$routeParams', '$
             if ($scope.id == undefined) {
                 $location.url("/dashboard");
             } else {
-                $scope.swot.stratsList = $scope.so.concat($scope.wo.concat($scope.st.concat($scope.wt)));
+                $scope.swot.stratsList = cleanEmptyRows($scope.so.concat($scope.wo.concat($scope.st.concat($scope.wt))));
                 $scope.swot.$save(function (resp, header) {
                     $location.path("/dashboard/view/" + $scope.swot.id);
                 });
             }
 
         };
+
+        function cleanEmptyRows(strats){
+            for(var ndx = 0; ndx < strats.length; ndx++){
+                if(!strats[ndx].description ||
+                    strats[ndx].description === "" ||
+                    strats[ndx].description === null){
+                    strats.splice(ndx--, 1);
+                }
+            }
+            return strats;
+        }
 
         function addRowIfEmpty(){
             if ($scope.so.length === 0) {
