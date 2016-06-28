@@ -57,9 +57,9 @@
 		<div class="col-xs-8">
 			<input type="text" class="form-control input-sm" ng-model="factor.description"></div>
 		<div class="col-xs-1">
-			<input type="text" class="form-control input-sm" ng-model="factor.weight" ng-init="factor.weight=0"></div>
+			<input type="text" class="form-control input-sm" ng-model="factor.weight"></div>
 		<div class="col-xs-1">
-			<input type="text" class="form-control input-sm" ng-model="factor.rating" ng-init="factor.rating=0"></div>
+			<input type="text" class="form-control input-sm" ng-model="factor.rating"></div>
 		<div class="col-xs-1">
 			{{(factor.rating|number) * (factor.weight|number)}}
 		</div>
@@ -80,9 +80,9 @@
 		<div class="col-xs-8">
 			<input type="text" class="form-control input-sm" ng-model="weak.description"></div>
 		<div class="col-xs-1">
-			<input type="text" class="form-control input-sm" ng-model="weak.weight" ng-init="weak.weight=0"></div>
+			<input type="text" class="form-control input-sm" ng-model="weak.weight"></div>
 		<div class="col-xs-1">
-			<input type="text" class="form-control input-sm" ng-model="weak.rating" ng-init="weak.rating=0"></div>
+			<input type="text" class="form-control input-sm" ng-model="weak.rating"></div>
 		<div class="col-xs-1">
 			{{(weak.rating|number) * (weak.weight|number)}}
 		</div>
@@ -103,9 +103,9 @@
 		<div class="col-xs-8">
 			<input type="text" class="form-control input-sm" ng-model="opp.description"></div>
 		<div class="col-xs-1">
-			<input type="text" class="form-control input-sm" ng-model="opp.weight" ng-init="opp.weight=0"></div>
+			<input type="text" class="form-control input-sm" ng-model="opp.weight"></div>
 		<div class="col-xs-1">
-			<input type="text" class="form-control input-sm" ng-model="opp.rating" ng-init="opp.rating=0"></div>
+			<input type="text" class="form-control input-sm" ng-model="opp.rating"></div>
 		<div class="col-xs-1">
 			{{(opp.rating|number) * (opp.weight|number)}}
 		</div>
@@ -126,9 +126,9 @@
 		<div class="col-xs-8">
 			<input type="text" class="form-control input-sm" ng-model="threat.description"></div>
 		<div class="col-xs-1">
-			<input type="text" class="form-control input-sm" ng-model="threat.weight" ng-init="threat.weight=0"></div>
+			<input type="text" class="form-control input-sm" ng-model="threat.weight"></div>
 		<div class="col-xs-1">
-			<input type="text" class="form-control input-sm" ng-model="threat.rating" ng-init="threat.rating=0"></div>
+			<input type="text" class="form-control input-sm" ng-model="threat.rating"></div>
 		<div class="col-xs-1">
 			{{(threat.rating|number) * (threat.weight|number)}}
 		</div>

@@ -87,16 +87,16 @@ app.controller('CreateSwotController', ["$scope", 'sharedProperties', '$location
 
         function addRowIfEmpty(){
             if ($scope.factors.length === 0) {
-                $scope.factors.push({factorType: 'S'});
+                $scope.factors.push({factorType: 'S', weight: '0.0', rating: '0.0'});
             }
             if ($scope.weaknesses.length === 0) {
-                $scope.weaknesses.push({factorType: 'W'});
+                $scope.weaknesses.push({factorType: 'W', weight: '0.0', rating: '0.0'});
             }
             if ($scope.opportunities.length === 0) {
-                $scope.opportunities.push({factorType: 'O'});
+                $scope.opportunities.push({factorType: 'O', weight: '0.0', rating: '0.0'});
             }
             if ($scope.threats.length === 0) {
-                $scope.threats.push({factorType: 'T'});
+                $scope.threats.push({factorType: 'T', weight: '0.0', rating: '0.0'});
             }
         };
     }]);
