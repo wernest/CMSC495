@@ -1,13 +1,19 @@
 <nav-bar></nav-bar>
 
-<div class = "listSwotReports" ng-controller="ListSwotReports" ngshow="showList">
-    <h2 class="text-center lead"><b>SWOT REPORTS LIST</b></h2>
-    <h5 class="text-center">You have {{reports.length}} available SWOT reports</h5>
+
+<h2 class="text-center lead"><b>SWOT REPORTS LIST</b></h2>
+
+<div class = "row instruction text-center lead col-md-6 col-md-offset-3 listSwotReports" ng-controller="ListSwotReports" ngshow="showList">
+    
+    <h4 class="text-center" style="padding: 10px;">You have {{reports.length}} available SWOT reports</h4>
     <h5 class="text-center">Click to view</h5>
     <p class="text-center">
     </p>
-    <div ng-repeat="report in reports" class="text-center col-lg-4 col-lg-offset-4">
-        <a ng-href="/#/dashboard/view/{{report.id}}">Report {{report.id}} was on
-            {{ report.creationDate | date:'MM/dd/yyyy @ h:mma' }}</a>
+    <div ng-repeat="report in reports" class="text-center col-lg-4 col-lg-offset-4" style="padding-top: 10px;">
+    <ul>
+        <li><img src="img/arrow.png"> <a ng-href="/#/dashboard/view/{{report.id}}">Report {{report.id}} was on
+
+            {{ report.creationDate | date:'MM/dd/yyyy @ h:mma' }}</a></li>
+    </ul>
     </div>
 </div>

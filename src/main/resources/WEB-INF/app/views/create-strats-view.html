@@ -1,45 +1,47 @@
 <nav-bar></nav-bar>
-
 <div class="row">
-	<div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
-	<div class="col-lg-6 col-md-8 col-sm-10 col-xs-10">
 
 		<h2 class="text-center lead"><b>SWOT RESULTS</b></h2>
-		<div ng-controller="FactorsController">
-			<div class="container form-swot-table">
+		
+		
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+		<div class="instruction col-lg-10 col-md-10 col-sm-10 col-xs-10" ng-controller="FactorsController">
+		<!--  <div class="instruction col-lg-10 col-lg-offset-1 text-center" ng-controller="FactorsController"> -->
+			
+			<div class="form-swot-table">
 			
 				<div class="row" style="display: flex">
-					<div class="table-cell col-lg-1 col-md-1 col-sm-1 col-xs-1 whiteCell">Internal Score is {{ internalScore }}</div>
-					<div class="table-cell col-lg-2 col-md-3 col-sm-4 col-xs-4 blueCell">
-						<div class="row">Strengths S</div>
+					<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">Internal Score is {{ internalScore }}</div>
+					<div class="table-cell col-lg-4 col-md-4 col-sm-5 col-xs-5 blueCell">
+						<div class="row padding-5px text-center text-style">Strengths&nbsp;&nbsp;&nbsp;&nbsp;S</div>
 						<div class="row" ng-repeat="strength in strengths">{{strength.description}}</div>
 					</div>
-					<div class="table-cell col-lg-2 col-md-3 col-sm-4 col-xs-4 yellowCell">
-						<div class="row">Weaknesses S</div>
+					<div class="table-cell col-lg-4 col-md-4 col-sm-5 col-xs-5 yellowCell">
+						<div class="row padding-5px text-center text-style">Weaknesses&nbsp;&nbsp;&nbsp;&nbsp;W</div>
 						<div class="row" ng-repeat="weak in weaknesses">{{weak.description}}</div>
 					</div>
-					<div class="table-cell col-lg-1 col-md-1 col-sm-1 col-xs-1 whiteCell">Internal Status is {{ internalStatus }}</div>
+					<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">Internal Status is {{ internalStatus }}</div>
 				</div>
 				
 				<div class="row" style="display: flex">
-					<div class="table-cell col-lg-1 col-md-1 col-sm-1 col-xs-1 whiteCell">External Score is {{ externalScore }}</div>
-					<div class="table-cell col-lg-2 col-md-3 col-sm-4 col-xs-4 greenCell">
-						<div class="row">Opportunities O</div>
+					<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">External Score is {{ externalScore }}</div>
+					<div class="table-cell col-lg-4 col-md-4 col-sm-5 col-xs-5 greenCell">
+						<div class="row padding-5px text-center text-style">Opportunities&nbsp;&nbsp;&nbsp;&nbsp;O</div>
 						<div class="row" ng-repeat="opp in opportunities">{{opp.description}}</div>
 					</div>
-					<div class="table-cell col-lg-2 col-md-3 col-sm-4 col-xs-4 redCell">
-						<div class="row">Threats T</div>
+					<div class="table-cell col-lg-4 col-md-4 col-sm-5 col-xs-5 redCell">
+						<div class="row padding-5px text-center text-style">Threats&nbsp;&nbsp;&nbsp;&nbsp;T</div>
 						<div class="row" ng-repeat="threat in threats">{{threat.description}}</div>
 					</div>
-					<div class="table-cell col-lg-1 col-md-1 col-sm-1 col-xs-1 whiteCell">External Status is {{ externalStatus }}</div>
+					<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">External Status is {{ externalStatus }}</div>
 				</div>
-				
 			</div>
 		</div>
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+</div>
 
 
-
-		<h2 class="text-center lead"><b>CREATE YOUR STRATEGIES</b></h2>
+		<h2 class="row text-center lead col-md-10 col-md-offset-1"><b>CREATE YOUR STRATEGIES</b></h2>
 		<div class="instruction-text text-center" ng-controller="TabsController"  style="margin: 20px;">
 			<div class="row">
 				<div class="text-center">
@@ -53,31 +55,21 @@
 			<div class="instruction col-md-10 col-md-offset-1 text-center" ng-controller="StratsController">
 				<form id="swotForm">
 					<div ng-include="currentTab.url"></div>
-					<div class="row col-md-12 col-md-offset-4" style="margin: 20px;">
-						<div class="col-xs-3 col-xs-3 col-md-offset-2">
+					<div class="row col-md-12 col-md-offset-4 text-center" style="margin: 20px;">
 							<button class="btn btn-secondary addRowCloseBtn" ng-click="addRow(currentTab.title)">Add Row</button>
-						</div>
-						<div class="col-xs-3 col-xs-3 col-md-offset-2" style="margin: 0px;">
-							<button class="btn btn-secondary addRowCloseBtn" ng-click="close()">Close</button>
-						</div>
-						<div class="col-xs-3">
-							<button class="btn btn-primary createSWOTBtn" ng-click="saveSwot()">Create Strategies</button>
-						</div>
-					</div>
+					</div>	
 				</form>
 			</div>
-			
+			<div class="col-md-12 col-md-offset-4 text-center" style="margin: 0 20 0 20px;">
+				<button class="btn btn-primary createSWOTBtn" ng-click="saveSwot()">Create Strategies</button>
+			</div>
 		</div>
-	</div>
-	<div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
-</div>
-
-
+		
 
 
 <script type="text/ng-template" id="so.tpl.html">
-	<div><h2>Strength Opportunities</h2></div>
-	<div class="row col-lg-12 col-lg-offset-0">
+	<div class="padding-5px"><h2>Strength Opportunities</h2></div>
+	<div class="row padding-5px col-lg-12 col-lg-offset-0">
 		<div class="col-xs-2">#</div>
 		<div class="col-xs-10">Strategy</div>
 	</div>
@@ -89,8 +81,8 @@
 	</div>
 </script>
 <script type="text/ng-template" id="wo.tpl.html">
-	<div><h2>Weakness Opportunities</h2></div>
-	<div class="row col-lg-12 col-lg-offset-0">
+	<div class="padding-5px"><h2>Weakness Opportunities</h2></div>
+	<div class="row padding-5px col-lg-12 col-lg-offset-0">
 		<div class="col-xs-2">#</div>
 		<div class="col-xs-10">Strategy</div>
 	</div>
@@ -103,8 +95,8 @@
 	</div>
 </script>
 <script type="text/ng-template" id="st.tpl.html">
-	<div><h2>Strength Threats</h2></div>
-	<div class="row col-lg-12 col-lg-offset-0">
+	<div class="padding-5px"><h2>Strength Threats</h2></div>
+	<div class="row padding-5px col-lg-12 col-lg-offset-0">
 		<div class="col-xs-2">#</div>
 		<div class="col-xs-10">Factor</div>
 	</div>
@@ -117,8 +109,8 @@
 	</div>
 </script>
 <script type="text/ng-template" id="wt.tpl.html">
-	<div><h2>Weakness Threats</h2></div>
-	<div class="row col-lg-12 col-lg-offset-0">
+	<div class="padding-5px"><h2>Weakness Threats</h2></div>
+	<div class="row padding-5px col-lg-12 col-lg-offset-0">
 		<div class="col-xs-2">#</div>
 		<div class="col-xs-10">Factor</div>
 	</div>
