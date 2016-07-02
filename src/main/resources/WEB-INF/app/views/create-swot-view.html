@@ -2,10 +2,14 @@
 
 <div class="row">
 	<div class="text-center col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1 instructionH">
-		<p>Instructions:</p>
-		<ol>
+		<h3>Instructions:</h3>
+		<ol class="instruction_list">
 			<li>Click on each letter box.</li>
 			<li>Enter factor, weight and rating.</li>
+				<ul>
+					<li>Weight scale of 0.0 ~ 1.0</li>
+					<li>Rating scale of 3 or 4 for strength/opportunity and 1 or 2 for weakness/threat</li>
+				</ul>
 			<li>Weighted score will be calculated as you fill out each row.</li>
 			<li>After you fill all 4 boxes, click submit to generate SWOT report.</li>
 		</ol>
@@ -26,25 +30,20 @@
 	<div class="instruction col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 text-center" ng-controller="CreateSwotController">
 		<form id="swotForm">
 			<div ng-include="currentTab.url"></div>
-			<div class="row col-md-12 col-md-offset-4" style="margin: 20px;">
-				<div class="col-xs-3 col-xs-3 col-md-offset-2">
+			<div class="row col-md-12 col-md-offset-4 text-center" style="margin: 20px;">
 					<button class="btn btn-secondary addRowCloseBtn" ng-click="addRow(currentTab.title)">Add Row</button>
-				</div>
-				<div class="col-xs-3 col-xs-3 col-md-offset-2" style="margin: 0px;">
-					<button class="btn btn-secondary addRowCloseBtn" ng-click="close()">Close</button>
-				</div>
-				<div class="col-xs-3">
-					<button class="btn btn-primary createSWOTBtn" ng-click="saveSwot()">Generate SWOT</button>
-				</div>
 			</div>
 		</form>
 	</div>
+	<div class="col-md-12 col-md-offset-4 text-center" ng-controller="CreateSwotController" style="margin: 0 20 0 20px;">
+		<button class="btn btn-primary createSWOTBtn" ng-click="saveSwot()">Generate SWOT</button>
+	</div>	
 </div>
 
 
 <script type="text/ng-template" id="strength.tpl.html">
-	<div><h2>Strengths</h2></div>
-	<div class="row col-lg-12 col-lg-offset-0">
+	<div class="padding-5px"><h2>Strengths</h2></div>
+	<div class="row padding-5px col-lg-12 col-lg-offset-0">
 		<div class="col-xs-1">#</div>
 		<div class="col-xs-8">Factor</div>
 		<div class="col-xs-1">Weight</div>
@@ -66,8 +65,8 @@
 	</div>
 </script>
 <script type="text/ng-template" id="weakness.tpl.html">
-	<div><h2>Weaknesses</h2></div>
-	<div class="row col-lg-12 col-lg-offset-0">
+	<div class="padding-5px"><h2>Weaknesses</h2></div>
+	<div class="row padding-5px col-lg-12 col-lg-offset-0">
 		<div class="col-xs-1">#</div>
 		<div class="col-xs-8">Factor</div>
 		<div class="col-xs-1">Weight</div>
@@ -89,8 +88,8 @@
 	</div>
 </script>
 <script type="text/ng-template" id="opportunities.tpl.html">
-	<div><h2>Opportunities</h2></div>
-	<div class="row col-lg-12 col-lg-offset-0">
+	<div class="padding-5px"><h2>Opportunities</h2></div>
+	<div class="row padding-5px col-lg-12 col-lg-offset-0">
 		<div class="col-xs-1">#</div>
 		<div class="col-xs-8">Factor</div>
 		<div class="col-xs-1">Weight</div>
@@ -112,8 +111,8 @@
 	</div>
 </script>
 <script type="text/ng-template" id="threats.tpl.html">
-	<div><h2>Threats</h2></div>
-	<div class="row col-lg-12 col-lg-offset-0">
+	<div class="padding-5px"><h2>Threats</h2></div>
+	<div class="row padding-5px col-lg-12 col-lg-offset-0">
 		<div class="col-xs-1">#</div>
 		<div class="col-xs-8">Factor</div>
 		<div class="col-xs-1">Weight</div>

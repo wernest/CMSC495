@@ -1,22 +1,23 @@
 <nav-bar></nav-bar>
-
+<div class="row">
 <div ng-controller="SwotController as swot">
 	<h2 class="text-center lead"><b>{{ creationDate }}</b></h2>
 	<div class="container">
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 			<div class="row" style="display: flex;">
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-company">
-					<div class="row view-title">{{ user.companyName }}</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-gray">
+					<div class="row view-title padding-5px">{{ user.companyName }}</div>
 				</div>
 
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-pink">
-					<div class="row view-title">Strengths - S</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-blue-S">
+					<div class="row view-title padding-5px text-style">Strengths&nbsp;&nbsp;&nbsp;&nbsp;S</div>
 					<div class="row" ng-repeat="factor in strengths">
 						{{factor.description}}
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-pink">
-					<div class="row view-title">Weaknesses - W</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-yellow-W">
+					<div class="row view-title padding-5px text-style">Weaknesses&nbsp;&nbsp;&nbsp;&nbsp;W</div>
 					<div class="row" ng-repeat="factor in weaknesses">
 						{{factor.description}}
 					</div>
@@ -24,20 +25,20 @@
 			</div>
 
 			<div class="row" style="display:flex">
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-blue">
-					<div class="row view-title">Opportunities - O</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green-O">
+					<div class="row view-title padding-5px text-style">Opportunities&nbsp;&nbsp;&nbsp;&nbsp;O</div>
 					<div class="row" ng-repeat="factor in opportunities">
 						{{factor.description}}
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
-					<div class="row view-title">SO strategies</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-orange-I">
+					<div class="row view-title padding-5px text-style">SO strategies</div>
 					<div class="row" ng-repeat="strat in so">
 						{{strat.description}}
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
-					<div class="row view-title">WO strategies</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-orange-II">
+					<div class="row view-title padding-5px text-style">WO strategies</div>
 					<div class="row" ng-repeat="strat in wo">
 						{{strat.description}}
 					</div>
@@ -45,27 +46,28 @@
 			</div>
 
 			<div class="row" style="display:flex">
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-blue">
-					<div class="row view-title">Threats - T</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-red-T">
+					<div class="row view-title padding-5px text-style">Threats&nbsp;&nbsp;&nbsp;&nbsp;T</div>
 					<div class="row" ng-repeat="factor in threats">
 						{{factor.description}}
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
-					<div class="row view-title">ST strategies</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-orange-I-2ndRow">
+					<div class="row view-title padding-5px text-style">ST strategies</div>
 					<div ng-repeat="strat in st">
 						<div class="row">
 							{{strat.description}}
 						</div>						</div>
 				</div>
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green">
-					<div class="row view-title">WT strategies</div>
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-orange-II-2ndRow">
+					<div class="row view-title padding-5px text-style">WT strategies</div>
 					<div class ="row" ng-repeat="strat in wt">
 						{{strat.description}}
 					</div>
 				</div>
 			</div>
-
 		</div>
+		<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 	</div>
+</div>
 </div>

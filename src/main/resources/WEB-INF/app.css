@@ -69,13 +69,8 @@
 }
 
 .footer {
-	/*position: absolute;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	padding: 1rem;*/
-	text-align: center;
 	font-style: italic;
+	padding: 100 0 10px;
 }
 
 .view-report {
@@ -201,38 +196,100 @@
 	text-align: left;
 }
 
-.view-company {
-	background-color: #ffffe6;
+.view-gray {
+	background-color: #808080;
 	border-bottom: solid;
 	border-right: solid;
-	border-color: #d9d9d9;
+	border-color: #b3b3b3;
+	word-wrap: break-word;
+	text-align: left;
+	font-size: 18px;
+	Font-weight: bold;
+}
+
+.view-green-O {
+	background-color: #33cc33;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
 }
 
-.view-green {
-	background-color: #ccffcc;
+.view-blue-S {
+	background-color: #0033cc;
 	border-bottom: solid;
 	border-right: solid;
-	border-color: #d9d9d9;
+	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
 }
 
-.view-blue {
-	background-color: #ccffff;
+.view-yellow-W {
+	background-color: #ffff00;
 	border-bottom: solid;
-	border-right: solid;
-	border-color: #d9d9d9;
+	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
 }
 
-.view-pink {
-	background-color: #ffcccc;
-	border-bottom: solid;
+.view-red-T {
+	background-color: #cc0000;
 	border-right: solid;
-	border-color: #d9d9d9;
+	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
 }
+
+.view-orange-I {
+	background-color: #ffcc66;
+	border-bottom: solid;
+	border-right: solid;
+	border-color: #b3b3b3;
+	word-wrap: break-word;
+	text-align: left;
+}
+
+.view-orange-II {
+	background-color: #ffcc66;
+	border-bottom: solid;
+	border-color: #b3b3b3;
+	word-wrap: break-word;
+	text-align: left;
+}
+
+.view-orange-I-2ndRow {
+	background-color: #ffcc66;
+	border-right: solid;
+	border-color: #b3b3b3;
+	word-wrap: break-word;
+	text-align: left;
+}
+
+.view-orange-II-2ndRow {
+	background-color: #ffcc66;
+	border-color: #b3b3b3;
+	word-wrap: break-word;
+	text-align: left;
+}
+
+.instruction_list li {
+	padding: 3px;
+}
+
+.padding-5px {
+	padding: 5px;
+}
+
+.text-style {
+	font-weight: bold;
+	font-size: 22px;
+	color: #FFFFFF;
+}
+
+
+
+
+
+
+
