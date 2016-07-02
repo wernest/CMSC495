@@ -98,5 +98,33 @@ app.controller('CreateSwotController', ["$scope", 'sharedProperties', '$location
             if ($scope.threats.length === 0) {
                 $scope.threats.push({factorType: 'T', weight: '0.0', rating: '0.0'});
             }
-        };
+        }
+
+        function checkTotals(){
+            var ndx = 0;
+            var tempStrengths = 0;
+            for(ndx = 0; ndx < $scope.strengths.length; ndx++){
+                tempStrengths += $scope.strengths.weight;
+            }
+
+            var tempWeak = 0;
+            for(ndx = 0; ndx < $scope.weaknesses.length; ndx++){
+                tempStrengths += $scope.weaknesses.weight;
+            }
+
+            var tempOpp = 0;
+            for(ndx = 0; ndx < $scope.opportunities.length; ndx++){
+                tempStrengths += $scope.opportunities.weight;
+            }
+            var tempThreats = 0;
+            for(ndx = 0; ndx < $scope.threats.length; ndx++){
+                tempStrengths += $scope.threats.weight;
+            }
+
+            if(tempStrengths + tempThreats == 1 && tempOpp + tempThreats == 1){
+                return true;
+            }else{
+                return false;
+            }
+        }
     }]);
