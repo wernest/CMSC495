@@ -12,13 +12,13 @@
 
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-blue-S">
 					<div class="row view-title padding-5px text-style">Strengths&nbsp;&nbsp;&nbsp;&nbsp;S</div>
-					<div class="row" ng-repeat="factor in strengths">
+					<div class="row padding-left" ng-repeat="factor in strengths">
 						{{factor.description}}
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-yellow-W">
 					<div class="row view-title padding-5px text-style">Weaknesses&nbsp;&nbsp;&nbsp;&nbsp;W</div>
-					<div class="row" ng-repeat="factor in weaknesses">
+					<div class="row padding-left" ng-repeat="factor in weaknesses">
 						{{factor.description}}
 					</div>
 				</div>
@@ -27,19 +27,19 @@
 			<div class="row" style="display:flex">
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-green-O">
 					<div class="row view-title padding-5px text-style">Opportunities&nbsp;&nbsp;&nbsp;&nbsp;O</div>
-					<div class="row" ng-repeat="factor in opportunities">
+					<div class="row padding-left" ng-repeat="factor in opportunities">
 						{{factor.description}}
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-purple-I">
-					<div class="row view-title padding-5px">SO strategies</div>
-					<div class="row" ng-repeat="strat in so">
+					<div class="row view-title text-style padding-5px">SO strategies</div>
+					<div class="row padding-left" ng-repeat="strat in so">
 						{{strat.description}}
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-purple-II">
-					<div class="row view-title padding-5px">WO strategies</div>
-					<div class="row" ng-repeat="strat in wo">
+					<div class="row view-title text-style padding-5px">WO strategies</div>
+					<div class="row padding-left" ng-repeat="strat in wo">
 						{{strat.description}}
 					</div>
 				</div>
@@ -48,20 +48,20 @@
 			<div class="row" style="display:flex">
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-red-T">
 					<div class="row view-title padding-5px text-style">Threats&nbsp;&nbsp;&nbsp;&nbsp;T</div>
-					<div class="row" ng-repeat="factor in threats">
+					<div class="row padding-left" ng-repeat="factor in threats">
 						{{factor.description}}
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-purple-I-2ndRow">
-					<div class="row view-title padding-5px">ST strategies</div>
+					<div class="row view-title text-style padding-5px">ST strategies</div>
 					<div ng-repeat="strat in st">
-						<div class="row">
+						<div class="row padding-left">
 							{{strat.description}}
 						</div>						</div>
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 view-purple-II-2ndRow">
-					<div class="row view-title padding-5px">WT strategies</div>
-					<div class ="row" ng-repeat="strat in wt">
+					<div class="row view-title text-style padding-5px">WT strategies</div>
+					<div class ="row padding-left" ng-repeat="strat in wt">
 						{{strat.description}}
 					</div>
 				</div>

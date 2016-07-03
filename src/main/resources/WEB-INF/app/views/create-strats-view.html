@@ -11,29 +11,29 @@
 		<div class="form-swot-table">
 
 			<div class="row" style="display: flex">
-				<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">Internal Score is {{ internalScore }}</div>
+				<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">Internal Score is <br>{{ internalScore }}</div>
 				<div class="table-cell col-lg-4 col-md-4 col-sm-5 col-xs-5 blueCell">
 					<div class="row padding-5px text-center text-style">Strengths&nbsp;&nbsp;&nbsp;&nbsp;S</div>
-					<div class="row" ng-repeat="strength in strengths">{{strength.description}}</div>
+					<div class="row padding-left" ng-repeat="strength in strengths">{{strength.description}}</div>
 				</div>
 				<div class="table-cell col-lg-4 col-md-4 col-sm-5 col-xs-5 yellowCell">
 					<div class="row padding-5px text-center text-style">Weaknesses&nbsp;&nbsp;&nbsp;&nbsp;W</div>
-					<div class="row" ng-repeat="weak in weaknesses">{{weak.description}}</div>
+					<div class="row padding-left" ng-repeat="weak in weaknesses">{{weak.description}}</div>
 				</div>
-				<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">Internal Status is {{ internalStatus }}</div>
+				<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">Internal Status is <br>{{ internalStatus }}</div>
 			</div>
 
 			<div class="row" style="display: flex">
-				<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">External Score is {{ externalScore }}</div>
+				<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">External Score is <br>{{ externalScore }}</div>
 				<div class="table-cell col-lg-4 col-md-4 col-sm-5 col-xs-5 greenCell">
 					<div class="row padding-5px text-center text-style">Opportunities&nbsp;&nbsp;&nbsp;&nbsp;O</div>
-					<div class="row" ng-repeat="opp in opportunities">{{opp.description}}</div>
+					<div class="row padding-left" ng-repeat="opp in opportunities">{{opp.description}}</div>
 				</div>
 				<div class="table-cell col-lg-4 col-md-4 col-sm-5 col-xs-5 redCell">
 					<div class="row padding-5px text-center text-style">Threats&nbsp;&nbsp;&nbsp;&nbsp;T</div>
-					<div class="row" ng-repeat="threat in threats">{{threat.description}}</div>
+					<div class="row padding-left" ng-repeat="threat in threats">{{threat.description}}</div>
 				</div>
-				<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">External Status is {{ externalStatus }}</div>
+				<div class="table-cell padding-5px col-lg-2 col-md-2 col-sm-1 col-xs-1 whiteCell">External Status is <br>{{ externalStatus }}</div>
 			</div>
 		</div>
 
