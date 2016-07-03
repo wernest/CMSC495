@@ -241,8 +241,8 @@
 	text-align: left;
 }
 
-.view-orange-I {
-	background-color: #ffcc66;
+.view-purple-I {
+	background-color: #f3f2ef;
 	border-bottom: solid;
 	border-right: solid;
 	border-color: #b3b3b3;
@@ -250,24 +250,24 @@
 	text-align: left;
 }
 
-.view-orange-II {
-	background-color: #ffcc66;
+.view-purple-II {
+	background-color: #f3f2ef;
 	border-bottom: solid;
 	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
 }
 
-.view-orange-I-2ndRow {
-	background-color: #ffcc66;
+.view-purple-I-2ndRow {
+	background-color: #f3f2ef;
 	border-right: solid;
 	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
 }
 
-.view-orange-II-2ndRow {
-	background-color: #ffcc66;
+.view-purple-II-2ndRow {
+	background-color: #f3f2ef;
 	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
