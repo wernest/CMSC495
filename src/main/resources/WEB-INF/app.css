@@ -185,7 +185,7 @@
 
 .whiteCell {
 	border: 1px solid #b3b3b3;
-	background-color: #ffffff;
+	background-color: #cccccc;
 	word-wrap: break-word;
 }
 
@@ -242,35 +242,43 @@
 }
 
 .view-purple-I {
-	background-color: #f3f2ef;
+	background-color: #d1d1e0;
 	border-bottom: solid;
 	border-right: solid;
 	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
+	font-weight: bold;
+	font-size: 22px;
 }
 
 .view-purple-II {
-	background-color: #f3f2ef;
+	background-color: #d1d1e0;
 	border-bottom: solid;
 	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
+	font-weight: bold;
+	font-size: 22px;
 }
 
 .view-purple-I-2ndRow {
-	background-color: #f3f2ef;
+	background-color: #d1d1e0;
 	border-right: solid;
 	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
+	font-weight: bold;
+	font-size: 22px;
 }
 
 .view-purple-II-2ndRow {
-	background-color: #f3f2ef;
+	background-color: #d1d1e0;
 	border-color: #b3b3b3;
 	word-wrap: break-word;
 	text-align: left;
+	font-weight: bold;
+	font-size: 22px;
 }
 
 .instruction_list li {
