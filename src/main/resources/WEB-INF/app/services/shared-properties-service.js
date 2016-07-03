@@ -14,7 +14,7 @@ app.service('sharedProperties', ['SwotResource', '$routeParams', '$q', function(
         getSwot: function() {
             return $q(function(resolve, reject){
                 if($routeParams.id != undefined){
-                    if(swot == "") {
+                    if(swot == "" || swot.id != $routeParams.id) {
                         swotResource.get({id: $routeParams.id}, function (value) {
                             swot = value;
                             resolve(swot);
