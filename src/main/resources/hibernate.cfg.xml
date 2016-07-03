@@ -11,7 +11,7 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/CMSC495</property>
         <property name="hibernate.connection.username">db_user</property>
         <property name="hibernate.connection.password">password</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- org.hibernate.HibernateException: No CurrentSessionContext configured! -->
         <property name="hibernate.current_session_context_class">thread</property>
 
