@@ -170,7 +170,7 @@
 
 .yellowCell {
 	border: 1px solid #b3b3b3;
-	background-color: #ffff00;
+	background-color: #eeba30;
 }
 
 .greenCell {
@@ -226,7 +226,7 @@
 }
 
 .view-yellow-W {
-	background-color: #ffff00;
+	background-color: #eeba30;
 	border-bottom: solid;
 	border-color: #b3b3b3;
 	word-wrap: break-word;
