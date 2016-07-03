@@ -6,10 +6,10 @@
 		<ol class="instruction_list">
 			<li>Click on each letter box.</li>
 			<li>Enter factor, weight and rating.</li>
-				<ul>
-					<li>Weight scale of 0.0 ~ 1.0</li>
-					<li>Rating scale of 3 or 4 for strength/opportunity and 1 or 2 for weakness/threat</li>
-				</ul>
+			<ul>
+				<li>Weight scale of 0.0 ~ 1.0</li>
+				<li>Rating scale of 3 or 4 for strength/opportunity and 1 or 2 for weakness/threat</li>
+			</ul>
 			<li>Weighted score will be calculated as you fill out each row.</li>
 			<li>After you fill all 4 boxes, click submit to generate SWOT report.</li>
 		</ol>
@@ -31,13 +31,13 @@
 		<form id="swotForm">
 			<div ng-include="currentTab.url"></div>
 			<div class="row col-md-12 col-md-offset-4 text-center" style="margin: 20px;">
-					<button class="btn btn-secondary addRowCloseBtn" ng-click="addRow(currentTab.title)">Add Row</button>
+				<button class="btn btn-secondary addRowCloseBtn" ng-click="addRow(currentTab.title)">Add Row</button>
 			</div>
 		</form>
+		<div class="col-md-12 col-md-offset-4 text-center" style="margin: 0 20 0 20px;">
+			<button class="btn btn-primary createSWOTBtn" ng-click="saveSwot()">Generate SWOT</button>
+		</div>
 	</div>
-	<div class="col-md-12 col-md-offset-4 text-center" ng-controller="CreateSwotController" style="margin: 0 20 0 20px;">
-		<button class="btn btn-primary createSWOTBtn" ng-click="saveSwot()">Generate SWOT</button>
-	</div>	
 </div>
 
 
