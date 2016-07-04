@@ -1,5 +1,6 @@
 package org.wernest.CMSC495.dao;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.wernest.CMSC495.api.SwotResource;
 import org.wernest.CMSC495.entities.SwotReport;

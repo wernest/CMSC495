@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NamedQueries({
@@ -26,10 +27,10 @@ public class SwotReport implements Serializable{
     private Date creationDate;
 
     @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
-    public List<Strats> stratsList;
+    public Set<Strats> stratsList;
 
     @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
-    public List<Factors> factorsList;
+    public Set<Factors> factorsList;
     public SwotReport() {
     }
 
