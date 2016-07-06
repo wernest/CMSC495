@@ -26,7 +26,7 @@ app.controller('CreateSwotController', ["$scope", 'sharedProperties', '$location
             $scope.swot = swot;
             $scope.id = swot.id;
         }).finally(function(){
-        addRowIfEmpty();
+            addRowIfEmpty();
         });
 
 
@@ -48,28 +48,32 @@ app.controller('CreateSwotController', ["$scope", 'sharedProperties', '$location
         };
 
         $scope.saveSwot = function(){
-            if($scope.id == undefined) {
-                var swotReport = {
-                    stratsList: [],
-                    factorsList: $scope.factors.concat($scope.weaknesses.concat($scope.opportunities.concat($scope.threats)))
-                };
+            checkTotals();
+            checkValues();
+            if($scope.swotForm.$valid) {
+                if ($scope.id == undefined) {
+                    var swotReport = {
+                        stratsList: [],
+                        factorsList: $scope.factors.concat($scope.weaknesses.concat($scope.opportunities.concat($scope.threats)))
+                    };
 
-                swotReport.factorsList = cleanEmptyRows(swotReport.factorsList);
+                    swotReport.factorsList = cleanEmptyRows(swotReport.factorsList);
 
-                swotResource.save(swotReport, function(resp, headers){
-                    sharedProperties.setSwot(resp);
-                    $location.path("/dashboard/strats/" + resp.id);
-                }, function(error){
-                    if(error.status === 401){
-                        $location.path("/");
-                    }
-                });
-            } else{
-                $scope.swot.factorsList = $scope.factors.concat($scope.weaknesses.concat($scope.opportunities.concat($scope.threats)));
-                $scope.swot.factorsList = cleanEmptyRows($scope.swot.factorsList);
-                $scope.swot.$save(function(resp, header){
-                    $location.path("/dashboard/strats/" + $scope.swot.id);
-                });
+                    swotResource.save(swotReport, function (resp, headers) {
+                        sharedProperties.setSwot(resp);
+                        $location.path("/dashboard/strats/" + resp.id);
+                    }, function (error) {
+                        if (error.status === 401) {
+                            $location.path("/");
+                        }
+                    });
+                } else {
+                    $scope.swot.factorsList = $scope.factors.concat($scope.weaknesses.concat($scope.opportunities.concat($scope.threats)));
+                    $scope.swot.factorsList = cleanEmptyRows($scope.swot.factorsList);
+                    $scope.swot.$save(function (resp, header) {
+                        $location.path("/dashboard/strats/" + $scope.swot.id);
+                    });
+                }
             }
 
         };
@@ -103,28 +107,72 @@ app.controller('CreateSwotController', ["$scope", 'sharedProperties', '$location
         function checkTotals(){
             var ndx = 0;
             var tempStrengths = 0;
-            for(ndx = 0; ndx < $scope.strengths.length; ndx++){
-                tempStrengths += $scope.strengths.weight;
+            for(ndx = 0; ndx < $scope.factors.length; ndx++){
+                tempStrengths += parseFloat($scope.factors[ndx].weight);
             }
 
             var tempWeak = 0;
             for(ndx = 0; ndx < $scope.weaknesses.length; ndx++){
-                tempStrengths += $scope.weaknesses.weight;
+                tempWeak += parseFloat($scope.weaknesses[ndx].weight);
             }
 
             var tempOpp = 0;
             for(ndx = 0; ndx < $scope.opportunities.length; ndx++){
-                tempStrengths += $scope.opportunities.weight;
+                tempOpp += parseFloat($scope.opportunities[ndx].weight);
             }
             var tempThreats = 0;
             for(ndx = 0; ndx < $scope.threats.length; ndx++){
-                tempStrengths += $scope.threats.weight;
+                tempThreats += parseFloat($scope.threats[ndx].weight);
             }
 
-            if(tempStrengths + tempThreats == 1 && tempOpp + tempThreats == 1){
+            if(tempStrengths + tempWeak <= 1 && tempOpp + tempThreats <= 1){
+                $scope.swotForm.$setValidity('sandw', true);
+                $scope.swotForm.$setValidity('oandt', true);
                 return true;
             }else{
+                if(tempStrengths + tempWeak > 1){
+                    $scope.swotForm.$setValidity('sandw', false);
+                }
+
+                if(tempOpp + tempThreats > 1){
+                    $scope.swotForm.$setValidity('oandt', false);
+                }
                 return false;
+            }
+        }
+
+        function checkValues(){
+            var ndx = 0;
+            $scope.swotForm.$setValidity('strengthrating', true);
+            $scope.swotForm.$setValidity('weakrating', true);
+            $scope.swotForm.$setValidity('opprating', true);
+            $scope.swotForm.$setValidity('threatrating', true);
+
+            for(ndx = 0; ndx < $scope.factors.length; ndx++){
+                if($scope.factors[ndx].rating != 3 && $scope.factors[ndx].rating != 4){
+                    $scope.swotForm.$setValidity('strengthrating', false);
+                }
+            }
+
+            isInvalid = false;
+            for(ndx = 0; ndx < $scope.weaknesses.length; ndx++){
+                if($scope.weaknesses[ndx].rating != 1 && $scope.weaknesses[ndx].rating != 2){
+                    $scope.swotForm.$setValidity('weakrating', false);
+                }
+            }
+
+            isInvalid = false;
+            for(ndx = 0; ndx < $scope.opportunities.length; ndx++){
+                if($scope.opportunities[ndx].rating != 3 && $scope.opportunities[ndx].rating != 4){
+                    $scope.swotForm.$setValidity('opprating', false);
+                }
+            }
+
+            isInvalid = false;
+            for(ndx = 0; ndx < $scope.threats.length; ndx++){
+                if($scope.threats[ndx].rating != 1 && $scope.threats[ndx].rating != 2){
+                    $scope.swotForm.$setValidity('threatrating', false);
+                }
             }
         }
     }]);

@@ -28,8 +28,28 @@
 	</div>
 
 	<div class="instruction col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12 text-center" ng-controller="CreateSwotController">
-		<form id="swotForm">
+		<form id="swotForm" name="swotForm">
 			<div ng-include="currentTab.url"></div>
+			<div ng-messages="swotForm.$error" class="form-error" role="alert" ng-messages-multiple>
+				<div ng-message="sandw">
+					Strength and Weakness Weight totals are not less than or equal to 1.
+				</div>
+				<div ng-message="oandt">
+					Opportunities and Threats Weight totals are not less than or equal to 1.
+				</div>
+				<div ng-message="strengthrating">
+					Invalid Entry: Strength rank must be 3 for a minor strength or 4 for a major strength.
+				</div>
+				<div ng-message="weakrating">
+					Invalid Entry: Weakness rank must be 1 for a minor weakness or 2 for a major weakness.
+				</div>
+				<div ng-message="opprating">
+					Invalid Entry: Opportunity rank must be 3 for a minor opportunity or 4 for a major opportunity.
+				</div>
+				<div ng-message="threatrating">
+					Invalid Entry: Threat rank must be 1 for a minor threat or 2 for a major threat.
+				</div>
+			</div>
 			<div class="row col-md-12 col-md-offset-4 text-center" style="margin: 20px;">
 				<button class="btn btn-secondary addRowCloseBtn" ng-click="addRow(currentTab.title)">Add Row</button>
 			</div>
@@ -58,9 +78,9 @@
 		<div class="col-xs-1">
 			<input type="text" class="form-control input-sm" ng-model="factor.weight"></div>
 		<div class="col-xs-1">
-			<input type="text" class="form-control input-sm" ng-model="factor.rating"></div>
+			<input type="text" class="form-control input-sm" ng-model="factor.rating" name="strengthrating"></div>
 		<div class="col-xs-1">
-			{{(factor.rating|number) * (factor.weight|number)}}
+			{{(factor.rating * factor.weight| number : 1)}}
 		</div>
 	</div>
 </script>
@@ -83,7 +103,7 @@
 		<div class="col-xs-1">
 			<input type="text" class="form-control input-sm" ng-model="weak.rating"></div>
 		<div class="col-xs-1">
-			{{(weak.rating|number) * (weak.weight|number)}}
+			{{(weak.rating * weak.weight|number : 1)}}
 		</div>
 	</div>
 </script>
@@ -106,7 +126,7 @@
 		<div class="col-xs-1">
 			<input type="text" class="form-control input-sm" ng-model="opp.rating"></div>
 		<div class="col-xs-1">
-			{{(opp.rating|number) * (opp.weight|number)}}
+			{{(opp.rating * opp.weight| number : 1)}}
 		</div>
 	</div>
 </script>
@@ -129,7 +149,7 @@
 		<div class="col-xs-1">
 			<input type="text" class="form-control input-sm" ng-model="threat.rating"></div>
 		<div class="col-xs-1">
-			{{(threat.rating|number) * (threat.weight|number)}}
+			{{(threat.rating * threat.weight|number : 1 )}}
 		</div>
 	</div>
 </script>
