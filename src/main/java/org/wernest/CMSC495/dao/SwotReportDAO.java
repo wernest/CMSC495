@@ -9,7 +9,7 @@ import org.wernest.CMSC495.entities.UserEntity;
 import java.util.List;
 
 /**
- * Created by will on 5/30/16.
+ * Swot Report DAO.
  */
 public class SwotReportDAO extends AbstractHibernateDAO<SwotReport> {
 
@@ -17,6 +17,11 @@ public class SwotReportDAO extends AbstractHibernateDAO<SwotReport> {
         this.setClazz(SwotReport.class);
     }
 
+    /**
+     * Returns all Swot Reports that this user has access to
+     * @param user UserEntity
+     * @return List of SwotReports for this user
+     */
     public List<SwotReport> findAllByUser(UserEntity user){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();

@@ -13,9 +13,18 @@ import javax.ws.rs.core.Response;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The SWOT Resource consists of the REST endpoints for the
+ * SWOT Report object.
+ */
 @Path("/swot")
 public class SwotResource extends BaseResource{
 
+    /**
+     * Returns a lit os SWOT Reports that the current logged in user
+     * owns
+     * @return Response containing a List of SWOT reports
+     */
     @GET
     @Secured
     @Produces(MediaType.APPLICATION_JSON)
@@ -25,6 +34,11 @@ public class SwotResource extends BaseResource{
         return Response.ok(reportList).build();
     }
 
+    /**
+     * Used to get a specific swot report by ID
+     * @param id Integer
+     * @return Swot Report or Error response code
+     */
     @GET
     @Path("/{id}")
     @Secured
@@ -46,6 +60,11 @@ public class SwotResource extends BaseResource{
         }
     }
 
+    /**
+     * Creating a new SWOT Report
+     * @param swotReport SwotReport to be saved
+     * @return Response with the saved SWOT Report
+     */
     @POST
     @Secured
     @Consumes(MediaType.APPLICATION_JSON)
@@ -63,6 +82,12 @@ public class SwotResource extends BaseResource{
         }
     }
 
+    /**
+     * Update a swot REPORT
+     * @param id Integer ID Value of the SWOT Report to save
+     * @param swotReport Swot Report to save
+     * @return Response with the saved swot report.
+     */
     @POST
     @Secured
     @Path("/{id}")
@@ -87,6 +112,11 @@ public class SwotResource extends BaseResource{
         }
     }
 
+    /**
+     * Delete Swot Report
+     * @param id Integer ID Value of report to delete
+     * @return HTTP Response
+     */
     @DELETE
     @Secured
     @Path("/{id}")

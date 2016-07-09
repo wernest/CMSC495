@@ -7,11 +7,19 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 
+/**
+ * Standard configuration Utility class for Hibernate access
+ */
 public class HibernateUtil {
 
     //XML based configuration
     private static SessionFactory sessionFactory;
 
+    /**
+     * Builds our session factory for database access using the hibernate configuration
+     * xml file.
+     * @return SessionFactory
+     */
     private static SessionFactory buildSessionFactory() {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
@@ -33,6 +41,10 @@ public class HibernateUtil {
         }
     }
 
+    /**
+     * Utility method for returning the Session Factory
+     * @return SessionFactory
+     */
     public static SessionFactory getSessionFactory() {
         if(sessionFactory == null) sessionFactory = buildSessionFactory();
         return sessionFactory;

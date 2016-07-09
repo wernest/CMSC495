@@ -18,11 +18,18 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * Created by will on 5/22/16.
+ * Resource to handle user registration and creating an account.
+ *
+ * Also determines the errors (cumulatively) and returns an error array to the client
  */
 @Path("/register")
 public class RegisterResource {
 
+    /**
+     * Method to create an account
+     * @param userEntity accont to create
+     * @return Errors if invalid request, or HTTP 200 if ok.
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createAccount(UserEntity userEntity){

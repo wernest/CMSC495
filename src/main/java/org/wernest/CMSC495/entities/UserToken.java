@@ -5,6 +5,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Object for managing our user sessions
+ */
 @Entity
 @NamedQueries({
         @NamedQuery(name="UserToken.getByToken", query="from UserToken e where e.token = :token"),
@@ -23,9 +26,18 @@ public class UserToken implements Serializable{
     private Date date;
     private Date expires;
 
+    /**
+     * Default c'tor
+     */
     public UserToken(){
     }
 
+    /**
+     * Used to generated a new token easily
+     * @param user USer this token belongs to
+     * @param token String token
+     * @param dateMills Current date/time in millis
+     */
     public UserToken(UserEntity user, String token, Long dateMills) {
         this.user = user;
         this.token = token;

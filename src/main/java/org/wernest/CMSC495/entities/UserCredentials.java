@@ -1,7 +1,8 @@
 package org.wernest.CMSC495.entities;
 
+
 /**
- * Created by will on 5/22/16.
+ * User credentials object for simplifying username/password logins
  */
 public class UserCredentials {
 

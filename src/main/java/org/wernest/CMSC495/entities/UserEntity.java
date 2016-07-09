@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 
 
+/**
+ * Main User Object
+ */
 @Entity
 @Table(name = "users")
 @NamedQueries({
@@ -31,10 +34,16 @@ public class UserEntity implements Serializable{
 
     private String companyName;
 
+    /**
+     * Don't serialize all the reports for the username
+     */
     @JsonIgnore
     @OneToMany(fetch=FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "userEntity")
     public List<SwotReport> swotReports;
 
+    /**
+     * Defualt c'tor
+     */
     public UserEntity() {}
 
     public UserEntity(String email, String username) {

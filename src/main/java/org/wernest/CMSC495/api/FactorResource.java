@@ -13,6 +13,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+/**
+ * The Factor Resource is the REST endpoint for all Factors
+ */
 @Path("/factors")
 @Secured
 public class FactorResource extends BaseResource{
@@ -30,7 +33,7 @@ public class FactorResource extends BaseResource{
         if(swotReport.getUserEntity() != user) {
             response = Response.status(Response.Status.FORBIDDEN).build();
         }else {
-            response = Response.ok(new FactorDAO().finAllByParent(parentID)).build();
+            response = Response.ok(new FactorDAO().findAllByParent(parentID)).build();
         }
         return response;
     }

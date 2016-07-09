@@ -42,8 +42,6 @@ import org.wernest.CMSC495.authentication.RegisterResource;
 
 /**
  * CMSC 495 Final Project
- *
- * @author wernest
  */
 public class App {
 

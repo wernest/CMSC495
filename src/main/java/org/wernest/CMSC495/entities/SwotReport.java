@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * SWOT Report object
+ */
 @Entity
 @NamedQueries({
     @NamedQuery(name="SwotReport.findAllByUser", query="from SwotReport e where e.userEntity.id = :user_id")
@@ -31,9 +34,16 @@ public class SwotReport implements Serializable{
 
     @OneToMany(fetch=FetchType.EAGER, cascade = {CascadeType.ALL})
     public Set<Factors> factorsList;
+
+    /**
+     * Default c'tor
+     */
     public SwotReport() {
     }
 
+    /**
+     * Generated getters and setters
+     */
     public Integer getID() {
         return ID;
     }

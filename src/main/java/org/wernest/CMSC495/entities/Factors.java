@@ -6,9 +6,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * Factors object to hold Factors for SWOT REports
+ */
 @Entity
 public class Factors implements Serializable{
 
+    /**
+     * Enumerated list for factor types
+     * S - Strength
+     * W - Weakness
+     * O - Opportunity
+     * T - Threats
+     */
     public enum FactorType{
         S, W, O, T
     }
@@ -25,9 +35,15 @@ public class Factors implements Serializable{
     private double weight;
     private int rating;
 
-
+    /**
+     * Default c'tor
+     */
     public Factors() {
     }
+
+    /**
+     * Getters and setters
+     */
 
     public Integer getID() {
         return ID;

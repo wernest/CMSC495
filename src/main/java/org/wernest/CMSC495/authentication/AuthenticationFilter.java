@@ -14,6 +14,15 @@ import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.security.Principal;
 
+/**
+ * Secured Provider
+ * This filter will run on every request going to a REST Endpoint that has
+ * been annotated with the "@Secured" annotation. This filter ensures
+ * that the user sending the request is using a valid token with the request, in
+ * either the header or a cookie.
+ *
+ * Similar implementation to OAuth2
+ */
 @Secured
 @Provider
 @Priority(Priorities.AUTHENTICATION)

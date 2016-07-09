@@ -15,13 +15,25 @@ import javax.ws.rs.core.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
- * Created by will on 5/22/16.
+ * Used to log a user in.
+ *
+ * The user will supply their credentials and if that
+ * user exists, and the password matches the user will be logged in.
+ * Logging in will take place by placing a "Cookie" on the response as well as
+ * providing the user with a token in the response.
  */
 @Path("/login")
 public class LoginResource extends BaseResource{
 
+    /**
+     * REST Endpoint for a user to supply credentials to
+     * in order to be logged in
+     * @param userCredentials object with username/password
+     * @return Response with token/cookie or error
+     */
     @POST
     @Produces(MediaType.APPLICATION_FORM_URLENCODED)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -50,6 +62,12 @@ public class LoginResource extends BaseResource{
         }
     }
 
+    /**
+     * Used to return a token for a user that is already logged in via
+     * a cookie.
+     * @param securityContext Contains the username after the filter is run
+     * @return Response with token or HTTP 401 if not
+     */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Secured
@@ -64,6 +82,13 @@ public class LoginResource extends BaseResource{
     }
 
 
+    /**
+     * Utility method to validate if the user exists and password is valid
+     * @param username username
+     * @param password password
+     * @return UserEntity object if valid
+     * @throws Exception if the password is invalid, or if that username doesn't exist
+     */
     private UserEntity authenticate(String username, String password) throws Exception {
         UserEntityDAO userEntityDAO = new UserEntityDAO();
         UserEntity userEntity = userEntityDAO.getByUsername(username);
@@ -71,10 +96,17 @@ public class LoginResource extends BaseResource{
             if (!password.equals(userEntity.getPassword())) {
                 throw new Exception("Bad password");
             }
+        }else { // UserEntity is null
+            throw new Exception("That user doesn't exist");
         }
         return userEntity;
     }
 
+    /**
+     * Utility method to get the token from the userentity object.
+     * @param userEntity UserEntity object
+     * @return String of the token for that userEntity object
+     */
     private String issueToken(UserEntity userEntity) {
         UserTokenDAO userTokenDAO = new UserTokenDAO();
         UserToken oldToken = userTokenDAO.getByUser(userEntity.getID());

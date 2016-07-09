@@ -8,11 +8,17 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Created by will on 5/30/16.
+ * DAO implementation for Factors
+ *
  */
 public class FactorDAO extends AbstractHibernateDAO<Factors> {
 
-    public List<Factors> finAllByParent(Integer parentID){
+    /**
+     * Locates all records based on parent ID
+     * @param parentID Integer
+     * @return List of factors with a parent of parentID
+     */
+    public List<Factors> findAllByParent(Integer parentID){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         List<Factors> factorsList = Collections.emptyList();

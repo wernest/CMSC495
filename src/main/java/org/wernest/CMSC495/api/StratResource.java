@@ -12,6 +12,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+/**
+ * The Strat Resource is the REST endpoints for the Strats objects
+ */
 @Path("/swot")
 @Secured
 public class StratResource extends BaseResource{

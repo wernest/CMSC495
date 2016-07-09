@@ -14,13 +14,19 @@ import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
 
 /**
- * Created by will on 5/22/16.
+ * Separate resource for handling logout.
  */
-
 @Path("logout")
 public class LogoutResource {
 
 
+    /**
+     * Log out method.
+     *
+     * Secured because a user must be logged in to log out
+     * @param securityContext context with the username to log out
+     * @return Response with an new cookie clearing the token previously used.
+     */
     @GET
     @Secured
     public Response logout(@Context SecurityContext securityContext){

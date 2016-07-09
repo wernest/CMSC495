@@ -4,16 +4,26 @@ import org.hibernate.Session;
 import org.wernest.CMSC495.authentication.SessionIdentifierGenerator;
 import org.wernest.CMSC495.entities.UserEntity;
 
+
 /**
- * Created by will on 5/22/16.
+ * UserEntityDao for getting UserEntity objects from the DB
  */
 public class UserEntityDAO extends AbstractHibernateDAO<UserEntity>{
 
+    /**
+     * Returns a UserEntity Object with a matching Email address
+     * @param email email address of user
+     * @return UserEntity if it matches, null if not
+     */
     public UserEntity getByEmail(String email){
         return (UserEntity) this.getCurrentSession().getNamedQuery("UserEntity.findByEmail").setString("email", email).uniqueResult();
     }
 
-
+    /**
+     * Returns a UserEntity object with a matching username
+     * @param username username of the user
+     * @return UserEntity if it matches, null if not
+     */
     public UserEntity getByUsername(String username){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();

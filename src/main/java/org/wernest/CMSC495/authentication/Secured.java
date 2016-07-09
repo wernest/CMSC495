@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by will on 5/22/16.
+ * Creates the "Secured" annotation so we can use it for our methods
  */
 @NameBinding
 @Retention(RetentionPolicy.RUNTIME)
